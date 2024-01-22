@@ -1,0 +1,83 @@
+/*================================================================================================
+                                  _global.scss [global style classes]
+ ================================================================================================*/
+
+ //== @import font-family [Poppins]
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+//== @import _variable.scss
+@import url('./_variables.scss');
+
+//== @import _grid.scss
+@import url('./_grid.scss');
+
+//== @import _typography.scss
+@import url('./_typography.scss');
+
+//== html | body
+html, body {
+    height: 100%; 
+ }
+ body { 
+   margin: 0; 
+   padding:0; 
+   font-family: 'Poppins', sans-serif; 
+   font-weight: 400;
+   font-size: 1rem;
+   line-height: 1.5;   
+   color: #000;
+   background-color: #F5F5F5;
+   -webkit-text-size-adjust: 100%;
+   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
+ }
+
+//== button
+ button{
+   font-family: 'Poppins', sans-serif;
+ }
+
+ .button-mh-56{
+  min-height: 56px !important;  
+ }
+//== card
+.card-box-shadow{
+  box-shadow: 0 4px 20px #2f8fe812 !important; 
+}
+
+.card-border-radius{
+  border-radius: 20px !important;
+}
+
+//== background-shade
+.background-shade {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
+/*================================================================================================
+                                  _global.scss [pages vise common scss]
+ ================================================================================================*/
+
+//== auth pages background
+.auth-page-bg{
+  background-image: url('https://www.aihr.com/wp-content/uploads/hrm-courses.png');   
+}
+
+.login-with-other {
+  position: absolute;
+  top: -12px;
+  background: white;      
+}
+
+//== otp-verification page
+.otp-verification-input{
+  font-size: 25px;
+
+  .mdc-text-field, .mdc-text-field--outlined{
+      padding:0px;
+  }
+}
