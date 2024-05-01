@@ -23,19 +23,18 @@ import {MatNativeDateModule} from '@angular/material/core';
 })
 export class SignupComponent {
 
-
   //=== labels 
   firstName = "First Name";
   lastName = "Last Name";
   emailAddress = "Email Address";
-  mobileNumber = "Mobile Number";
-  dateOfBirth = "Date of Birth";
+  mobileNumber = "Mobile Number"; 
   selectGender = "Select Gender";
   selectGenderList = ['Male', 'Female', 'Others'];
-  selectRole = "Select Role";
   selectRoleOptions = ['BDE', 'Backend Developer', 'Frontend Developer', 'Full Stack Developer', 'Human Resources'];
   password = "Password";
   confirmPassword = "Confirm Password";
   signUpBtn = "Sign Up";
+
+
 
 }
