@@ -26,7 +26,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
-## OnRecord project notes 
+## =================== OnRecord project notes ====================================== ##
 
 - angular version 17.0.5
 - angular material 17.0.1 :- https://material.angular.io/guide/getting-started
@@ -37,3 +37,23 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - font-family: Poppins          https://fonts.google.com/specimen/Poppins
 - icons : google material icons https://fonts.google.com/icons
 - typography : custom typography
+
+## Setting local db json server api in angular
+
+ - (https://www.npmjs.com/package/json-server) URL and run "npm i json-server" command in project root folder. (npm i json-server)
+
+ - (https://www.npmjs.com/package/concurrently) URL and run "npm i concurrently" command in project root folder. (npm i concurrently)
+
+ - "D:\Workspace\Angular\Angular-local-api\angular-dashboard\package.json" this file path in angular project and add below commands.
+
+ - "json-server": "json-server --watch db.json --port 3000",
+
+ - "start-dev": "concurrently \"npm run json-server\" \"ng serve -o\""
+
+ - create local DB file (db.json) in project root folder. create object {"user": [ add value https://jsonplaceholder.typicode.com/users ]}
+
+ - then run "npm run start-dev" in your terminal and your project will run.
+
+ - localhost for local db (http://localhost:3000/user)
+
+ - localhost 4200 for angular changes.
