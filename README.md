@@ -28,8 +28,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## =================== OnRecord project notes ====================================== ##
 
-- angular version 17.0.5
-- angular material 17.0.1 :- https://material.angular.io/guide/getting-started
+- angular version 17.3.6
+- angular material 17.3.7 :- https://material.angular.io/guide/getting-started
 - reference link :- https://smarthr.dreamstechnologies.com/react/template/ | https://einfosoft.com/templates/admin/kuber/source/light/#/authentication/signin
 
 ## OnRecord project typography

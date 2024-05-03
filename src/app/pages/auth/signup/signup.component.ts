@@ -23,7 +23,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 })
 export class SignupComponent {
 
-  //=== labels 
+  //== labels 
   firstName = "First Name";
   lastName = "Last Name";
   emailAddress = "Email Address";
