@@ -47,6 +47,9 @@
                   <mat-icon matSuffix><span class="material-symbols-outlined">
                       close
                     </span></mat-icon>
+                    @if (signUpForm.get("emailAddress")?.invalid) {
+                      <mat-error>this is required</mat-error>
+                    }
                 </mat-form-field>
               </div>
               <div class="col-12">
