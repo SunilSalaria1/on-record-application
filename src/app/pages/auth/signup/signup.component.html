@@ -29,6 +29,9 @@
                   <mat-icon matSuffix><span class="material-symbols-outlined">
                       close
                     </span></mat-icon>
+                  @if (signUpForm.get("firstName")?.invalid) {
+                  <mat-error>This is required</mat-error>
+                  }
                 </mat-form-field>
               </div>
               <div class="col-12">
@@ -38,6 +41,9 @@
                   <mat-icon matSuffix><span class="material-symbols-outlined">
                       close
                     </span></mat-icon>
+                  @if (signUpForm.get("lastName")?.invalid) {
+                  <mat-error>This is required</mat-error>
+                  }
                 </mat-form-field>
               </div>
               <div class="col-12">
@@ -47,9 +53,12 @@
                   <mat-icon matSuffix><span class="material-symbols-outlined">
                       close
                     </span></mat-icon>
-                    @if (signUpForm.get("emailAddress")?.invalid) {
-                      <mat-error>this is required</mat-error>
-                    }
+                  @if (signUpForm.get("emailAddress")?.hasError("required")) {
+                  <mat-error>This is required</mat-error>
+                  }
+                  @else if (signUpForm.get("emailAddress")?.hasError("email")) {
+                  <mat-error>You must enter a value</mat-error>
+                  }
                 </mat-form-field>
               </div>
               <div class="col-12">
@@ -59,8 +68,11 @@
                   <mat-icon matSuffix><span class="material-symbols-outlined">
                       close
                     </span></mat-icon>
+                  @if (signUpForm.get("mobileNumber")?.invalid) {
+                  <mat-error>This is required</mat-error>
+                  }
                 </mat-form-field>
-              </div>             
+              </div>
               <div class="col-12">
                 <mat-form-field appearance="outline" class="w-100">
                   <mat-label [innerText]="selectGender"></mat-label>
@@ -70,9 +82,12 @@
                     } @empty {
                     <mat-option value="one">There are no items found.</mat-option>
                     }
-                  </mat-select>               
+                  </mat-select>
+                  @if (signUpForm.get("selectGender")?.invalid) {
+                  <mat-error>This is required</mat-error>
+                  }
                 </mat-form-field>
-              </div>            
+              </div>
               <div class="col-12">
                 <mat-form-field appearance="outline" class="w-100">
                   <mat-label [innerText]="password"></mat-label>
@@ -83,6 +98,9 @@
                   <mat-icon matSuffix><span class="material-symbols-outlined">
                       visibility_lock
                     </span></mat-icon>
+                  @if (signUpForm.get("password")?.invalid) {
+                  <mat-error>This is required</mat-error>
+                  }
                 </mat-form-field>
               </div>
               <div class="col-12">
@@ -95,6 +113,9 @@
                   <mat-icon matSuffix><span class="material-symbols-outlined">
                       visibility_lock
                     </span></mat-icon>
+                  @if (signUpForm.get("confirmPassword")?.invalid) {
+                  <mat-error>This is required</mat-error>
+                  }
                 </mat-form-field>
               </div>
               <div class="col-12 mt-1">
