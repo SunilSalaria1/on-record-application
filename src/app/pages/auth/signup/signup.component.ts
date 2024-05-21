@@ -58,6 +58,9 @@ export class SignupComponent {
     if (this.signUpForm.valid) {
       console.warn(this.signUpForm.value);
     }
-
+    else{
+      
+    }
+    
   }
 }
