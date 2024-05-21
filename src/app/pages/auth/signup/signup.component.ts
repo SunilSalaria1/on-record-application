@@ -11,9 +11,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
-import {FormBuilder} from '@angular/forms';
-import {ReactiveFormsModule} from '@angular/forms';
-import {Validators} from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Validators } from '@angular/forms';
 
 
 @Component({
@@ -25,7 +25,8 @@ import {Validators} from '@angular/forms';
   styleUrl: './signup.component.scss'
 })
 export class SignupComponent {
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) { }
+
   //== labels 
   firstName = "First Name";
   lastName = "Last Name";
@@ -40,16 +41,23 @@ export class SignupComponent {
   //== signup formBuilder
   signUpForm = this.formBuilder.group({
     firstName: ['', Validators.required],
-    lastName: ['', Validators.required],   
-    emailAddress: ['', [Validators.required, Validators.email]],   
-    mobileNumber: ['', Validators.required],   
-    selectGender: ['', Validators.required],   
-    password: ['', Validators.required],   
-    confirmPassword: ['', Validators.required]   
-    });
+    lastName: ['', Validators.required],
+    emailAddress: ['', [Validators.required, Validators.email]],
+    mobileNumber: ['', Validators.required],
+    selectGender: ['', Validators.required],
+    password: ['', Validators.required],
+    confirmPassword: ['', Validators.required]
+  });
 
-    //== onSubmit signup formBuilder
-    onSubmit(){
+  //== password visible icon 
+  passwordVisibleIcon = true;
+  confirmPasswordVisibleIcon = true;
+
+  //== onSubmit signup formBuilder
+  onSubmit() {
+    if (this.signUpForm.valid) {
       console.warn(this.signUpForm.value);
     }
+
+  }
 }

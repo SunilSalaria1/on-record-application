@@ -26,9 +26,13 @@
                 <mat-form-field appearance="outline" class="w-100">
                   <mat-label [innerText]="firstName"></mat-label>
                   <input matInput formControlName="firstName">
-                  <mat-icon matSuffix><span class="material-symbols-outlined">
+
+                  @if(signUpForm.get("firstName")?.value){
+                  <mat-icon class="cursor-pointer" matSuffix (click)="signUpForm.get('firstName')?.reset()"><span
+                      class="material-symbols-outlined">
                       close
                     </span></mat-icon>
+                  }
                   @if (signUpForm.get("firstName")?.invalid) {
                   <mat-error>This is required</mat-error>
                   }
@@ -38,9 +42,12 @@
                 <mat-form-field appearance="outline" class="w-100">
                   <mat-label [innerText]="lastName"></mat-label>
                   <input matInput formControlName="lastName">
-                  <mat-icon matSuffix><span class="material-symbols-outlined">
+                  @if(signUpForm.get("lastName")?.value){
+                  <mat-icon class="cursor-pointer" matSuffix (click)="signUpForm.get('lastName')?.reset()"><span
+                      class="material-symbols-outlined">
                       close
                     </span></mat-icon>
+                  }
                   @if (signUpForm.get("lastName")?.invalid) {
                   <mat-error>This is required</mat-error>
                   }
@@ -50,9 +57,12 @@
                 <mat-form-field appearance="outline" class="w-100">
                   <mat-label [innerText]="emailAddress"></mat-label>
                   <input matInput formControlName="emailAddress">
-                  <mat-icon matSuffix><span class="material-symbols-outlined">
+                  @if(signUpForm.get("emailAddress")?.value){
+                  <mat-icon class="cursor-pointer" matSuffix (click)="signUpForm.get('emailAddress')?.reset()"><span
+                      class="material-symbols-outlined">
                       close
                     </span></mat-icon>
+                  }
                   @if (signUpForm.get("emailAddress")?.hasError("required")) {
                   <mat-error>This is required</mat-error>
                   }
@@ -65,9 +75,12 @@
                 <mat-form-field appearance="outline" class="w-100">
                   <mat-label [innerText]="mobileNumber"></mat-label>
                   <input matInput formControlName="mobileNumber">
-                  <mat-icon matSuffix><span class="material-symbols-outlined">
+                  @if(signUpForm.get("mobileNumber")?.value){
+                  <mat-icon class="cursor-pointer" matSuffix (click)="signUpForm.get('mobileNumber')?.reset()"><span
+                      class="material-symbols-outlined">
                       close
                     </span></mat-icon>
+                  }
                   @if (signUpForm.get("mobileNumber")?.invalid) {
                   <mat-error>This is required</mat-error>
                   }
@@ -91,13 +104,20 @@
               <div class="col-12">
                 <mat-form-field appearance="outline" class="w-100">
                   <mat-label [innerText]="password"></mat-label>
-                  <input matInput formControlName="password">
-                  <mat-icon matSuffix class="pe-0"><span class="material-symbols-outlined">
+                  <input matInput formControlName="password" [type]="passwordVisibleIcon ? 'password' : 'text'">
+                  @if(signUpForm.get("password")?.value){
+                  <mat-icon class="cursor-pointer px-0" matSuffix (click)="signUpForm.get('password')?.reset()"><span
+                      class="material-symbols-outlined">
                       close
                     </span></mat-icon>
-                  <mat-icon matSuffix><span class="material-symbols-outlined">
-                      visibility_lock
-                    </span></mat-icon>
+                  }
+                  @if(signUpForm.get("password")?.value){
+                  <mat-icon class="cursor-pointer" matSuffix (click)="passwordVisibleIcon = !passwordVisibleIcon">
+                    <span class="material-symbols-outlined">
+                      {{passwordVisibleIcon ? 'visibility_off' : 'visibility'}}
+                    </span>
+                  </mat-icon>
+                  }
                   @if (signUpForm.get("password")?.invalid) {
                   <mat-error>This is required</mat-error>
                   }
@@ -106,20 +126,30 @@
               <div class="col-12">
                 <mat-form-field appearance="outline" class="w-100">
                   <mat-label [innerText]="confirmPassword"></mat-label>
-                  <input matInput formControlName="confirmPassword">
-                  <mat-icon matSuffix class="pe-0"><span class="material-symbols-outlined">
+                  <input matInput formControlName="confirmPassword"
+                    [type]="confirmPasswordVisibleIcon ? 'password' : 'text'">
+                  @if(signUpForm.get("confirmPassword")?.value){
+                  <mat-icon class="cursor-pointer px-0" matSuffix
+                    (click)="signUpForm.get('confirmPassword')?.reset()"><span class="material-symbols-outlined">
                       close
                     </span></mat-icon>
-                  <mat-icon matSuffix><span class="material-symbols-outlined">
-                      visibility_lock
-                    </span></mat-icon>
+                  }
+                  @if(signUpForm.get("confirmPassword")?.value){
+                  <mat-icon class="cursor-pointer" matSuffix
+                    (click)="confirmPasswordVisibleIcon = !confirmPasswordVisibleIcon">
+                    <span class="material-symbols-outlined">
+                      {{confirmPasswordVisibleIcon ? 'visibility_off' : 'visibility'}}
+                    </span>
+                  </mat-icon>
+                  }
                   @if (signUpForm.get("confirmPassword")?.invalid) {
                   <mat-error>This is required</mat-error>
                   }
                 </mat-form-field>
               </div>
               <div class="col-12 mt-1">
-                <button mat-raised-button color="primary" class="px-4 fs-16 w-100 button-mh-56">{{signUpBtn}}</button>
+                <button mat-raised-button color="primary" class="px-4 fs-16 w-100 button-mh-56"
+                  (click)="signUpForm.valid">{{signUpBtn}}</button>
               </div>
               <div class="col-12 mt-4 text-center">
                 <span>Already a member?</span> <a routerLink="/login" class="ms-2 text-primary">Sign In</a>
