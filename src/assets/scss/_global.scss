@@ -64,6 +64,25 @@ html, body {
 }
 
 /*================================================================================================
+                                  _global.scss [angular material component override]
+ ================================================================================================*/
+
+ //== form validations font size
+ .mat-mdc-form-field-error{
+  font-size: 11px;
+ }
+
+ //== form validation * symbol hide
+ .mdc-floating-label--required:not(.mdc-floating-label--hide-required-marker)::after {
+  display: none;
+}
+
+//== form validation label color gray
+.mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-floating-label, .mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-floating-label--float-above {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+/*================================================================================================
                                   _global.scss [pages vise common scss]
  ================================================================================================*/
 

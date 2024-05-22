@@ -22,11 +22,10 @@
           <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
             <!-- row -->
             <div class="row">
-              <div class="col-12">
+              <div class="col-12 mb-1">
                 <mat-form-field appearance="outline" class="w-100">
                   <mat-label [innerText]="firstName"></mat-label>
                   <input matInput formControlName="firstName">
-
                   @if(signUpForm.get("firstName")?.value){
                   <mat-icon class="cursor-pointer" matSuffix (click)="signUpForm.get('firstName')?.reset()"><span
                       class="material-symbols-outlined">
@@ -38,7 +37,7 @@
                   }
                 </mat-form-field>
               </div>
-              <div class="col-12">
+              <div class="col-12 mb-1">
                 <mat-form-field appearance="outline" class="w-100">
                   <mat-label [innerText]="lastName"></mat-label>
                   <input matInput formControlName="lastName">
@@ -53,7 +52,7 @@
                   }
                 </mat-form-field>
               </div>
-              <div class="col-12">
+              <div class="col-12 mb-1">
                 <mat-form-field appearance="outline" class="w-100">
                   <mat-label [innerText]="emailAddress"></mat-label>
                   <input matInput formControlName="emailAddress">
@@ -67,14 +66,14 @@
                   <mat-error>This is required</mat-error>
                   }
                   @else if (signUpForm.get("emailAddress")?.hasError("email")) {
-                  <mat-error>You must enter a value</mat-error>
+                  <mat-error>You must enter a valid email address</mat-error>
                   }
                 </mat-form-field>
               </div>
-              <div class="col-12">
+              <div class="col-12 mb-1">
                 <mat-form-field appearance="outline" class="w-100">
                   <mat-label [innerText]="mobileNumber"></mat-label>
-                  <input matInput formControlName="mobileNumber">
+                  <input matInput formControlName="mobileNumber" maxlength="10" minlength="10">
                   @if(signUpForm.get("mobileNumber")?.value){
                   <mat-icon class="cursor-pointer" matSuffix (click)="signUpForm.get('mobileNumber')?.reset()"><span
                       class="material-symbols-outlined">
@@ -84,9 +83,12 @@
                   @if (signUpForm.get("mobileNumber")?.invalid) {
                   <mat-error>This is required</mat-error>
                   }
+                  @else if (signUpForm.get("mobileNumber")?.hasError("maxlength") && signUpForm.get("mobileNumber")?.hasError("minlength")) {
+                    <mat-error>Mobile number length should be 10</mat-error>
+                  }
                 </mat-form-field>
               </div>
-              <div class="col-12">
+              <div class="col-12 mb-1">
                 <mat-form-field appearance="outline" class="w-100">
                   <mat-label [innerText]="selectGender"></mat-label>
                   <mat-select formControlName="selectGender">
@@ -101,7 +103,7 @@
                   }
                 </mat-form-field>
               </div>
-              <div class="col-12">
+              <div class="col-12 mb-1">
                 <mat-form-field appearance="outline" class="w-100">
                   <mat-label [innerText]="password"></mat-label>
                   <input matInput formControlName="password" [type]="passwordVisibleIcon ? 'password' : 'text'">
@@ -123,7 +125,7 @@
                   }
                 </mat-form-field>
               </div>
-              <div class="col-12">
+              <div class="col-12 mb-1">
                 <mat-form-field appearance="outline" class="w-100">
                   <mat-label [innerText]="confirmPassword"></mat-label>
                   <input matInput formControlName="confirmPassword"
@@ -147,7 +149,7 @@
                   }
                 </mat-form-field>
               </div>
-              <div class="col-12 mt-1">
+              <div class="col-12">
                 <button mat-raised-button color="primary" class="px-4 fs-16 w-100 button-mh-56">{{signUpBtn}}</button>
               </div>
               <div class="col-12 mt-4 text-center">

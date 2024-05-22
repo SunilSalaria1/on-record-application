@@ -43,7 +43,7 @@ export class SignupComponent {
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     emailAddress: ['', [Validators.required, Validators.email]],
-    mobileNumber: ['', Validators.required],
+    mobileNumber: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
     selectGender: ['', Validators.required],
     password: ['', Validators.required],
     confirmPassword: ['', Validators.required]
