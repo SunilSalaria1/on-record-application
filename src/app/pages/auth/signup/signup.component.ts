@@ -43,9 +43,9 @@ export class SignupComponent {
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     emailAddress: ['', [Validators.required, Validators.email]],
-    mobileNumber: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
+    mobileNumber: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
     selectGender: ['', Validators.required],
-    password: ['', Validators.required],
+    password: ['', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[!@#$%^&*]).{6,}$')]],
     confirmPassword: ['', Validators.required]
   });
 
@@ -57,10 +57,6 @@ export class SignupComponent {
   onSubmit() {
     if (this.signUpForm.valid) {
       console.warn(this.signUpForm.value);
-    }
-    else{
-      
-    }
-    
+    }       
   }
 }

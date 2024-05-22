@@ -73,18 +73,18 @@
               <div class="col-12 mb-1">
                 <mat-form-field appearance="outline" class="w-100">
                   <mat-label [innerText]="mobileNumber"></mat-label>
-                  <input matInput formControlName="mobileNumber" maxlength="10" minlength="10">
+                  <input matInput formControlName="mobileNumber">
                   @if(signUpForm.get("mobileNumber")?.value){
                   <mat-icon class="cursor-pointer" matSuffix (click)="signUpForm.get('mobileNumber')?.reset()"><span
                       class="material-symbols-outlined">
                       close
                     </span></mat-icon>
                   }
-                  @if (signUpForm.get("mobileNumber")?.invalid) {
+                  @if (signUpForm.get("mobileNumber")?.hasError("required")) {
                   <mat-error>This is required</mat-error>
                   }
-                  @else if (signUpForm.get("mobileNumber")?.hasError("maxlength") && signUpForm.get("mobileNumber")?.hasError("minlength")) {
-                    <mat-error>Mobile number length should be 10</mat-error>
+                  @else if (signUpForm.get("mobileNumber")?.hasError("pattern")) {
+                  <mat-error>Mobile number pattern (+919876543210)</mat-error>
                   }
                 </mat-form-field>
               </div>
@@ -120,8 +120,11 @@
                     </span>
                   </mat-icon>
                   }
-                  @if (signUpForm.get("password")?.invalid) {
+                  @if (signUpForm.get("password")?.hasError("required")) {
                   <mat-error>This is required</mat-error>
+                  }
+                  @else if (signUpForm.get("password")?.hasError("pattern")) {
+                  <mat-error>At least 6 characters with an uppercase and a special character</mat-error>
                   }
                 </mat-form-field>
               </div>
@@ -144,7 +147,7 @@
                     </span>
                   </mat-icon>
                   }
-                  @if (signUpForm.get("confirmPassword")?.invalid) {
+                  @if (signUpForm.get("confirmPassword")?.hasError("required")) {
                   <mat-error>This is required</mat-error>
                   }
                 </mat-form-field>
