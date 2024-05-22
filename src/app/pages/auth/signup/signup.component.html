@@ -152,6 +152,23 @@
                   }
                 </mat-form-field>
               </div>
+
+              <div class="col-12 mb-1">
+                <div class="password-indicator">
+                  <div class="password-indicator-bar" style="width:50%;"></div>
+                </div>
+                <ul class="mt-0 ps-1" style="font-size: 13px;list-style-type: none;">
+                  <li class="mb-1 d-flex align-items-center"><mat-icon>error</mat-icon> <span class="ms-2">The minimum
+                      password length is 6 characters</span></li>
+                  <li class="mb-1 d-flex align-items-center"><mat-icon>error</mat-icon> <span class="ms-2">English upper
+                      case letters [A, B, C, … Z]</span></li>
+                  <li class="mb-1 d-flex align-items-center" style="color: red;"><mat-icon>error</mat-icon> <span
+                      class="ms-2">English lower case letters [a, b, c, … z]</span></li>
+                  <li class="mb-1 d-flex align-items-center" style="color: green;"><mat-icon>verified</mat-icon> <span
+                      class="ms-2">Must have special character [#$%%^^&&]</span></li>
+                </ul>
+              </div>
+
               <div class="col-12">
                 <button mat-raised-button color="primary" class="px-4 fs-16 w-100 button-mh-56">{{signUpBtn}}</button>
               </div>
