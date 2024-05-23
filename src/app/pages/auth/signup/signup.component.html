@@ -106,7 +106,8 @@
               <div class="col-12 mb-1">
                 <mat-form-field appearance="outline" class="w-100">
                   <mat-label [innerText]="password"></mat-label>
-                  <input matInput formControlName="password" [type]="passwordVisibleIcon ? 'password' : 'text'">
+                  <input matInput formControlName="password" (input)="test()"
+                    [type]="passwordVisibleIcon ? 'password' : 'text'">
                   @if(signUpForm.get("password")?.value){
                   <mat-icon class="cursor-pointer px-0" matSuffix (click)="signUpForm.get('password')?.reset()"><span
                       class="material-symbols-outlined">
@@ -124,7 +125,8 @@
                   <mat-error>This is required</mat-error>
                   }
                   @else if (signUpForm.get("password")?.hasError("pattern")) {
-                  <mat-error>At least 6 characters with an uppercase and a special character</mat-error>
+                  <mat-error>Password must be at least 6 characters long and contain at least one uppercase letter, one
+                    lowercase letter, one number, and one special character</mat-error>
                   }
                 </mat-form-field>
               </div>
@@ -158,15 +160,25 @@
                   <div class="password-indicator-bar" style="width:50%;"></div>
                 </div>
                 <ul class="mt-0 ps-1" style="font-size: 13px;list-style-type: none;">
-                  <li class="mb-1 d-flex align-items-center"><mat-icon>error</mat-icon> <span class="ms-2">The minimum
-                      password length is 6 characters</span></li>
-                  <li class="mb-1 d-flex align-items-center"><mat-icon>error</mat-icon> <span class="ms-2">English upper
-                      case letters [A, B, C, … Z]</span></li>
-                  <li class="mb-1 d-flex align-items-center" style="color: red;"><mat-icon>error</mat-icon> <span
-                      class="ms-2">English lower case letters [a, b, c, … z]</span></li>
-                  <li class="mb-1 d-flex align-items-center" style="color: green;"><mat-icon>verified</mat-icon> <span
-                      class="ms-2">Must have special character [#$%%^^&&]</span></li>
+                  <li class="mb-1 d-flex align-items-center" [ngClass]="{'testt-green': minLengthSix}"><mat-icon>
+                      {{minLengthSix ? 'check_circle' : 'error'}}
+                    </mat-icon><span class="ms-2">The minimum password length is 6 characters</span></li>
+                  <li class="mb-1 d-flex align-items-center" [ngClass]="{'testt-green': containsUppercase}">
+                    <mat-icon>{{containsUppercase ? 'check_circle' : 'error'}}</mat-icon> <span class="ms-2">English
+                      uppercase letters [A, B, C, … Z]</span>
+                  </li>
+                  <li class="mb-1 d-flex align-items-center" [ngClass]="{'testt-green': containsLowercase}">
+                    <mat-icon>{{containsLowercase ? 'check_circle' : 'error'}}</mat-icon> <span class="ms-2">English
+                      lowercase letters [a, b, c, … z]</span>
+                  </li>
+                  <li class="mb-1 d-flex align-items-center" [ngClass]="{'testt-green': containsArabicNumerals}">
+                    <mat-icon>{{containsArabicNumerals ? 'check_circle' : 'error'}}</mat-icon> <span
+                      class="ms-2">Westernized
+                      Arabic numerals [0, 1, 2, … 9]</span></li>
+                  <li class="mb-1 d-flex align-items-center" [ngClass]="{'testt-green': containsSpecialCharacters}"><mat-icon>{{containsSpecialCharacters ? 'check_circle' : 'error'}}</mat-icon> <span class="ms-2">Special
+                      characters [!#$%^&*-?/~`]</span></li>
                 </ul>
+
               </div>
 
               <div class="col-12">

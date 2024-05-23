@@ -14,13 +14,15 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { FormBuilder } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { CommonModule, UpperCasePipe } from '@angular/common';
+import { BlockList } from 'net';
 
 
 @Component({
   selector: 'app-signup',
   standalone: true,
   imports: [MatButtonModule, MatCardModule, MatInputModule, MatIconModule, MatDividerModule, RouterOutlet, RouterLink,
-    RouterLink, RouterLinkActive, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, ReactiveFormsModule],
+    RouterLink, RouterLinkActive, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, ReactiveFormsModule, CommonModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
@@ -45,13 +47,40 @@ export class SignupComponent {
     emailAddress: ['', [Validators.required, Validators.email]],
     mobileNumber: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
     selectGender: ['', Validators.required],
-    password: ['', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[!@#$%^&*]).{6,}$')]],
+    password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()\\-_=+{}[\\]|\\\\:;"\'<>,.?/~`])[A-Za-z\\d!@#$%^&*()\\-_=+{}[\\]|\\\\:;"\'<>,.?/~`]{6,}$')]], //Password must be at least 6 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character
     confirmPassword: ['', Validators.required]
   });
 
   //== password visible icon 
   passwordVisibleIcon = true;
   confirmPasswordVisibleIcon = true;
+
+ //validation required checks
+  minLengthSix = false;
+  containsUppercase: boolean = false;
+  containsLowercase: boolean = false;
+  containsArabicNumerals: boolean = false;
+  containsSpecialCharacters:Boolean = false;
+
+  test() {
+    //for length
+    console.log(this.signUpForm.controls.password.value);
+    this.minLengthSix = (this.signUpForm.controls.password.value as string)?.length >= 6
+    //for uppercase
+    const uppercasePattern = /[A-Z]/;
+    this.containsUppercase = uppercasePattern.test(this.signUpForm.controls.password.value as string);
+    //for lowercase
+    const lowercasePattern = /[a-z]/;
+    this.containsLowercase = lowercasePattern.test(this.signUpForm.controls.password.value as string);
+
+    //number
+    const arabicNumeralPattern = /[0-9]/;
+    this.containsArabicNumerals = arabicNumeralPattern.test(this.signUpForm.controls.password.value as string);
+//special character
+    const specialCharacterPattern = /[!#$%^&*-?/~`]/;
+    this.containsSpecialCharacters = specialCharacterPattern.test(this.signUpForm.controls.password.value as string);
+
+  }
 
   //== onSubmit signup formBuilder
   onSubmit() {
