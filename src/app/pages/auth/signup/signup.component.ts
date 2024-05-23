@@ -47,7 +47,9 @@ export class SignupComponent {
     emailAddress: ['', [Validators.required, Validators.email]],
     mobileNumber: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
     selectGender: ['', Validators.required],
-    password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()\\-_=+{}[\\]|\\\\:;"\'<>,.?/~`])[A-Za-z\\d!@#$%^&*()\\-_=+{}[\\]|\\\\:;"\'<>,.?/~`]{6,}$')]], //Password must be at least 6 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character
+    password: ['', [Validators.required,
+    Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()\\-=+{}[\\]|\\\\:;"\'<>,.?/~`])(?!.*\d)[A-Za-z\d!@#$%^&*()\\-=+{}[\\]|\\\\:;"\'<>,.?/~`]{6,}$')
+    ]],
     confirmPassword: ['', Validators.required]
   });
 
@@ -55,12 +57,12 @@ export class SignupComponent {
   passwordVisibleIcon = true;
   confirmPasswordVisibleIcon = true;
 
- //validation required checks
+  //validation required checks
   minLengthSix = false;
   containsUppercase: boolean = false;
   containsLowercase: boolean = false;
   containsArabicNumerals: boolean = false;
-  containsSpecialCharacters:Boolean = false;
+  containsSpecialCharacters: Boolean = false;
 
   test() {
     //for length
@@ -74,10 +76,10 @@ export class SignupComponent {
     this.containsLowercase = lowercasePattern.test(this.signUpForm.controls.password.value as string);
 
     //number
-    const arabicNumeralPattern = /[0-9]/;
+    const arabicNumeralPattern = /\d/;
     this.containsArabicNumerals = arabicNumeralPattern.test(this.signUpForm.controls.password.value as string);
-//special character
-    const specialCharacterPattern = /[!#$%^&*-?/~`]/;
+    //special character
+    const specialCharacterPattern = /[!@#$%^&*()\-=+{}[\]|\\:;"'<>,.?/~`]/;
     this.containsSpecialCharacters = specialCharacterPattern.test(this.signUpForm.controls.password.value as string);
 
   }
