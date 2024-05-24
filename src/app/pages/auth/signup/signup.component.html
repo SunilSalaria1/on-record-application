@@ -162,7 +162,7 @@
                 <div class="password-indicator-panel">
                   <div class="password-indicator-message mb-3">
                     <div
-                      class="password-indicator-bar-message fs-13 d-flex align-items-center w-100 card-box-shadow p-1"
+                      class="password-indicator-bar-message fs-13 d-flex align-items-center w-100 card-box-shadow p-2"
                       [ngClass]="{'default-color-message': trueConditionCount == 0, 'test-danger-message': trueConditionCount <= 2 && trueConditionCount > 0, 'test-warning-message': trueConditionCount > 2 && trueConditionCount <= 4, 'test-green-message': trueConditionCount == 5}">
                       @if (trueConditionCount == 0) {
                       <mat-icon>emoji_objects</mat-icon> <span class="ms-1">Let's build a strong password
