@@ -109,7 +109,7 @@
                   <input matInput formControlName="password" (input)="test()"
                     [type]="passwordVisibleIcon ? 'password' : 'text'">
                   @if(signUpForm.get("password")?.value){
-                  <mat-icon class="cursor-pointer px-0" matSuffix clic (click)="passwordClose()"><span
+                  <mat-icon class="cursor-pointer px-0" matSuffix (click)="passwordClose()"><span
                       class="material-symbols-outlined">
                       close
                     </span></mat-icon>
@@ -124,10 +124,10 @@
                   @if (signUpForm.get("password")?.hasError("required")) {
                   <mat-error>This is required</mat-error>
                   }
-                  @else if (signUpForm.get("password")?.hasError("pattern")) {
+                  <!-- @else if (signUpForm.get("password")?.hasError("pattern")) {
                   <mat-error>Password must be at least 6 characters long and contain at least one uppercase letter, one
                     lowercase letter, one number, and one special character</mat-error>
-                  }
+                  } -->
                 </mat-form-field>
               </div>
               <div class="col-12 mb-1">
@@ -175,7 +175,6 @@
                           }@else if (trueConditionCount ==5) {
                           <mat-icon>emoji_objects</mat-icon> <span class="ms-1">Your password strength is strong.</span>
                           }
-
                     </div>
                   </div>
 
