@@ -99,6 +99,17 @@ export class SignupComponent {
     return this.trueConditionCount * percentagePerCondition;
   }
 
+  //== password close icon click
+  passwordClose() {
+    this.signUpForm.get('password')?.reset();
+    this.minLengthSix = false;
+    this.containsUppercase = false;
+    this.containsLowercase = false;
+    this.containsArabicNumerals = false;
+    this.containsSpecialCharacters = false;
+    this.defaultColorDark = false;
+  }
+
   //== onSubmit signup formBuilder
   onSubmit() {
     if (this.signUpForm.valid) {

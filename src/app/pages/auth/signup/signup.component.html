@@ -109,7 +109,7 @@
                   <input matInput formControlName="password" (input)="test()"
                     [type]="passwordVisibleIcon ? 'password' : 'text'">
                   @if(signUpForm.get("password")?.value){
-                  <mat-icon class="cursor-pointer px-0" matSuffix (click)="signUpForm.get('password')?.reset()"><span
+                  <mat-icon class="cursor-pointer px-0" matSuffix clic (click)="passwordClose()"><span
                       class="material-symbols-outlined">
                       close
                     </span></mat-icon>
@@ -125,9 +125,9 @@
                   <mat-error>This is required</mat-error>
                   }
                   @else if (signUpForm.get("password")?.hasError("pattern")) {
-                    <mat-error>Password must be at least 6 characters long and contain at least one uppercase letter, one
-                      lowercase letter, one number, and one special character</mat-error>
-                    }
+                  <mat-error>Password must be at least 6 characters long and contain at least one uppercase letter, one
+                    lowercase letter, one number, and one special character</mat-error>
+                  }
                 </mat-form-field>
               </div>
               <div class="col-12 mb-1">
@@ -160,53 +160,58 @@
                   <div class="password-indicator-bar" [style.width.%]="indicatorWidth"></div>
                 </div>
                 <div class="password-indicator-panel">
-                <div class="password-indicator-message mb-3">
-                  <div class="password-indicator-bar-message fs-13 d-flex align-items-center w-100 card-box-shadow p-1"
-                    [ngClass]="{'default-color-message': trueConditionCount == 0, 'test-danger-message': trueConditionCount <= 2 && trueConditionCount > 0, 'test-warning-message': trueConditionCount > 2 && trueConditionCount <= 4, 'test-green-message': trueConditionCount == 5}">
-                    @if (trueConditionCount == 0) {
-                    <mat-icon>emoji_objects</mat-icon> <span class="ms-1">Let's build a strong password together.</span>
-                    }@else if (trueConditionCount <= 2 && trueConditionCount> 0) {
-                      <mat-icon>emoji_objects</mat-icon> <span class="ms-1">Your password strength is weak. You can do better!</span>
-                      }@else if (trueConditionCount > 2 && trueConditionCount <= 4) { <mat-icon>emoji_objects</mat-icon>
-                        <span class="ms-1">Your password strength is average. You can do better!</span>
-                        }@else if (trueConditionCount ==5) {
-                        <mat-icon>emoji_objects</mat-icon> <span class="ms-1">Your password strength is strong. Great work!</span>
-                        }
+                  <div class="password-indicator-message mb-3">
+                    <div
+                      class="password-indicator-bar-message fs-13 d-flex align-items-center w-100 card-box-shadow p-1"
+                      [ngClass]="{'default-color-message': trueConditionCount == 0, 'test-danger-message': trueConditionCount <= 2 && trueConditionCount > 0, 'test-warning-message': trueConditionCount > 2 && trueConditionCount <= 4, 'test-green-message': trueConditionCount == 5}">
+                      @if (trueConditionCount == 0) {
+                      <mat-icon>emoji_objects</mat-icon> <span class="ms-1">Let's build a strong password
+                        together.</span>
+                      }@else if (trueConditionCount <= 2 && trueConditionCount> 0) {
+                        <mat-icon>emoji_objects</mat-icon> <span class="ms-1">Your password strength is weak. You can do
+                          better!</span>
+                        }@else if (trueConditionCount > 2 && trueConditionCount <= 4) { <mat-icon>
+                          emoji_objects</mat-icon>
+                          <span class="ms-1">Your password strength is average. You can do better!</span>
+                          }@else if (trueConditionCount ==5) {
+                          <mat-icon>emoji_objects</mat-icon> <span class="ms-1">Your password strength is strong. Great
+                            work!</span>
+                          }
 
+                    </div>
                   </div>
+
+                  <ul class="mt-0 px-2 fs-13">
+                    <li class="mb-1 d-flex align-items-center"
+                      [ngClass]="{'test-green': minLengthSix, 'test-danger': !minLengthSix && defaultColorDark, 'default-color' : !defaultColorDark}">
+                      <mat-icon>
+                        {{minLengthSix ? 'check_circle' : 'error'}}
+                      </mat-icon><span class="ms-2">The minimum password length is 6 characters</span>
+                    </li>
+                    <li class="mb-1 d-flex align-items-center"
+                      [ngClass]="{'test-green': containsUppercase, 'test-danger': !containsUppercase && defaultColorDark, 'default-color' : !defaultColorDark}">
+                      <mat-icon>{{containsUppercase ? 'check_circle' : 'error'}}</mat-icon> <span class="ms-2">English
+                        uppercase letters [A, B, C, … Z]</span>
+                    </li>
+                    <li class="mb-1 d-flex align-items-center"
+                      [ngClass]="{'test-green': containsLowercase, 'test-danger': !containsLowercase && defaultColorDark, 'default-color' : !defaultColorDark}">
+                      <mat-icon>{{containsLowercase ? 'check_circle' : 'error'}}</mat-icon> <span class="ms-2">English
+                        lowercase letters [a, b, c, … z]</span>
+                    </li>
+                    <li class="mb-1 d-flex align-items-center"
+                      [ngClass]="{'test-green': containsArabicNumerals, 'test-danger': !containsArabicNumerals && defaultColorDark, 'default-color' : !defaultColorDark}">
+                      <mat-icon>{{containsArabicNumerals ? 'check_circle' : 'error'}}</mat-icon> <span
+                        class="ms-2">Westernized
+                        Arabic numerals [0, 1, 2, … 9]</span>
+                    </li>
+                    <li class="mb-1 d-flex align-items-center"
+                      [ngClass]="{'test-green': containsSpecialCharacters, 'test-danger': !containsSpecialCharacters && defaultColorDark, 'default-color' : !defaultColorDark}">
+                      <mat-icon>{{containsSpecialCharacters ? 'check_circle' : 'error'}}</mat-icon> <span
+                        class="ms-2">Special
+                        characters [!#$%^&*-?/~`]</span>
+                    </li>
+                  </ul>
                 </div>
-                
-                <ul class="mt-0 px-2 fs-13">
-                  <li class="mb-1 d-flex align-items-center"
-                    [ngClass]="{'test-green': minLengthSix, 'test-danger': !minLengthSix && defaultColorDark, 'default-color' : !defaultColorDark}">
-                    <mat-icon>
-                      {{minLengthSix ? 'check_circle' : 'error'}}
-                    </mat-icon><span class="ms-2">The minimum password length is 6 characters</span>
-                  </li>
-                  <li class="mb-1 d-flex align-items-center"
-                    [ngClass]="{'test-green': containsUppercase, 'test-danger': !containsUppercase && defaultColorDark, 'default-color' : !defaultColorDark}">
-                    <mat-icon>{{containsUppercase ? 'check_circle' : 'error'}}</mat-icon> <span class="ms-2">English
-                      uppercase letters [A, B, C, … Z]</span>
-                  </li>
-                  <li class="mb-1 d-flex align-items-center"
-                    [ngClass]="{'test-green': containsLowercase, 'test-danger': !containsLowercase && defaultColorDark, 'default-color' : !defaultColorDark}">
-                    <mat-icon>{{containsLowercase ? 'check_circle' : 'error'}}</mat-icon> <span class="ms-2">English
-                      lowercase letters [a, b, c, … z]</span>
-                  </li>
-                  <li class="mb-1 d-flex align-items-center"
-                    [ngClass]="{'test-green': containsArabicNumerals, 'test-danger': !containsArabicNumerals && defaultColorDark, 'default-color' : !defaultColorDark}">
-                    <mat-icon>{{containsArabicNumerals ? 'check_circle' : 'error'}}</mat-icon> <span
-                      class="ms-2">Westernized
-                      Arabic numerals [0, 1, 2, … 9]</span>
-                  </li>
-                  <li class="mb-1 d-flex align-items-center"
-                    [ngClass]="{'test-green': containsSpecialCharacters, 'test-danger': !containsSpecialCharacters && defaultColorDark, 'default-color' : !defaultColorDark}">
-                    <mat-icon>{{containsSpecialCharacters ? 'check_circle' : 'error'}}</mat-icon> <span
-                      class="ms-2">Special
-                      characters [!#$%^&*-?/~`]</span>
-                  </li>
-                </ul>
-              </div>
               </div>
 
               <div class="col-12">
