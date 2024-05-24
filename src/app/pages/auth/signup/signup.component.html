@@ -124,6 +124,10 @@
                   @if (signUpForm.get("password")?.hasError("required")) {
                   <mat-error>This is required</mat-error>
                   }
+                  @else if (signUpForm.get("password")?.hasError("pattern")) {
+                    <mat-error>Password must be at least 6 characters long and contain at least one uppercase letter, one
+                      lowercase letter, one number, and one special character</mat-error>
+                    }
                 </mat-form-field>
               </div>
               <div class="col-12 mb-1">
@@ -155,6 +159,7 @@
                 <div class="password-indicator card-box-shadow">
                   <div class="password-indicator-bar" [style.width.%]="indicatorWidth"></div>
                 </div>
+                <div class="password-indicator-panel">
                 <div class="password-indicator-message mb-3">
                   <div class="password-indicator-bar-message fs-13 d-flex align-items-center w-100 card-box-shadow p-1"
                     [ngClass]="{'default-color-message': trueConditionCount == 0, 'test-danger-message': trueConditionCount <= 2 && trueConditionCount > 0, 'test-warning-message': trueConditionCount > 2 && trueConditionCount <= 4, 'test-green-message': trueConditionCount == 5}">
@@ -170,6 +175,7 @@
 
                   </div>
                 </div>
+                
                 <ul class="mt-0 px-2 fs-13">
                   <li class="mb-1 d-flex align-items-center"
                     [ngClass]="{'test-green': minLengthSix, 'test-danger': !minLengthSix && defaultColorDark, 'default-color' : !defaultColorDark}">
@@ -200,7 +206,7 @@
                       characters [!#$%^&*-?/~`]</span>
                   </li>
                 </ul>
-
+              </div>
               </div>
 
               <div class="col-12">

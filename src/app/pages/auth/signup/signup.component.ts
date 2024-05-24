@@ -47,10 +47,7 @@ export class SignupComponent {
     emailAddress: ['', [Validators.required, Validators.email]],
     mobileNumber: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
     selectGender: ['', Validators.required],
-    password: ['', [Validators.required,
-    Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()\\-=+{}[\\]|\\\\:;"\'<>,.?/~`])(?!.*\d)[A-Za-z\d!@#$%^&*()\\-=+{}[\\]|\\\\:;"\'<>,.?/~`]{6,}$')
-    //Password must be at least 6 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character
-    ]],
+    password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()\\-=+{}[\\]|\\\\:;"\'<>,.?/~`])(?!.*\d)[A-Za-z\d!@#$%^&*()\\-=+{}[\\]|\\\\:;"\'<>,.?/~`]{6,}$')]],
     confirmPassword: ['', Validators.required]
   });
 
