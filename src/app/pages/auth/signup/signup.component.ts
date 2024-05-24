@@ -47,7 +47,7 @@ export class SignupComponent {
     emailAddress: ['', [Validators.required, Validators.email]],
     mobileNumber: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
     selectGender: ['', Validators.required],
-    password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()\\-=+{}[\\]|\\\\:;"\'<>,.?/~`])(?!.*\d)[A-Za-z\d!@#$%^&*()\\-=+{}[\\]|\\\\:;"\'<>,.?/~`]{6,}$')]],
+    password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()\\-_=+{}[\\]|\\\\:;"\'<>,.?/~`])[A-Za-z\\d!@#$%^&*()\\-_=+{}[\\]|\\\\:;"\'<>,.?/~`]{6,}$')]],
     confirmPassword: ['', Validators.required]
   });
 
