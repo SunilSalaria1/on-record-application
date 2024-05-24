@@ -73,7 +73,7 @@
               <div class="col-12 mb-1">
                 <mat-form-field appearance="outline" class="w-100">
                   <mat-label [innerText]="mobileNumber"></mat-label>
-                  <input matInput formControlName="mobileNumber">
+                  <input matInput formControlName="mobileNumber" mask="+00 00000-00000" (input)="testinput()">
                   @if(signUpForm.get("mobileNumber")?.value){
                   <mat-icon class="cursor-pointer" matSuffix (click)="signUpForm.get('mobileNumber')?.reset()"><span
                       class="material-symbols-outlined">
@@ -84,7 +84,7 @@
                   <mat-error>This is required</mat-error>
                   }
                   @else if (signUpForm.get("mobileNumber")?.hasError("pattern")) {
-                  <mat-error>Mobile number pattern (+919876543210)</mat-error>
+                  <mat-error>Invalid phone number format (+91 00000-00000)</mat-error>
                   }
                 </mat-form-field>
               </div>

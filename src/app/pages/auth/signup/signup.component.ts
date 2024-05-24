@@ -14,17 +14,18 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { FormBuilder } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { CommonModule, UpperCasePipe } from '@angular/common';
-import { BlockList } from 'net';
-
+import { CommonModule } from '@angular/common';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
   imports: [MatButtonModule, MatCardModule, MatInputModule, MatIconModule, MatDividerModule, RouterOutlet, RouterLink,
-    RouterLink, RouterLinkActive, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, ReactiveFormsModule, CommonModule],
+    RouterLink, RouterLinkActive, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, ReactiveFormsModule, CommonModule,NgxMaskDirective,
+    NgxMaskPipe],
   templateUrl: './signup.component.html',
-  styleUrl: './signup.component.scss'
+  styleUrl: './signup.component.scss',
+  providers: [provideNgxMask()]
 })
 export class SignupComponent {
   constructor(private formBuilder: FormBuilder) { }
@@ -45,7 +46,7 @@ export class SignupComponent {
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     emailAddress: ['', [Validators.required, Validators.email]],
-    mobileNumber: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
+    mobileNumber: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{12}$")]],
     selectGender: ['', Validators.required],
     password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()\\-_=+{}[\\]|\\\\:;"\'<>,.?/~`])[A-Za-z\\d!@#$%^&*()\\-_=+{}[\\]|\\\\:;"\'<>,.?/~`]{6,}$')]], //Password must be at least 6 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character
     confirmPassword: ['', Validators.required]
@@ -115,5 +116,9 @@ export class SignupComponent {
     if (this.signUpForm.valid) {
       console.warn(this.signUpForm.value);
     }
+  }
+
+  testinput(){
+    console.log(this.signUpForm.controls.mobileNumber.errors);
   }
 }
