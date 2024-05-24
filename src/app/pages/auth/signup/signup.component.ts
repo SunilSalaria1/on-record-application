@@ -49,6 +49,7 @@ export class SignupComponent {
     selectGender: ['', Validators.required],
     password: ['', [Validators.required,
     Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()\\-=+{}[\\]|\\\\:;"\'<>,.?/~`])(?!.*\d)[A-Za-z\d!@#$%^&*()\\-=+{}[\\]|\\\\:;"\'<>,.?/~`]{6,}$')
+    //Password must be at least 6 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character
     ]],
     confirmPassword: ['', Validators.required]
   });
@@ -58,13 +59,15 @@ export class SignupComponent {
   confirmPasswordVisibleIcon = true;
 
   //validation required checks
-  minLengthSix = false;
+  minLengthSix: boolean = false;
   containsUppercase: boolean = false;
   containsLowercase: boolean = false;
   containsArabicNumerals: boolean = false;
   containsSpecialCharacters: Boolean = false;
+  defaultColorDark: boolean = false;
 
   test() {
+    this.defaultColorDark = true; // Mark as touched when test function is called
     //for length
     console.log(this.signUpForm.controls.password.value);
     this.minLengthSix = (this.signUpForm.controls.password.value as string)?.length >= 6
@@ -81,7 +84,22 @@ export class SignupComponent {
     //special character
     const specialCharacterPattern = /[!@#$%^&*()\-=+{}[\]|\\:;"'<>,.?/~`]/;
     this.containsSpecialCharacters = specialCharacterPattern.test(this.signUpForm.controls.password.value as string);
+  }
 
+  //indicator width calculator   
+  get trueConditionCount() {
+    return [
+      this.minLengthSix,
+      this.containsUppercase,
+      this.containsLowercase,
+      this.containsArabicNumerals,
+      this.containsSpecialCharacters
+    ].filter(condition => condition).length;
+  }
+
+  get indicatorWidth() {
+    const percentagePerCondition = 100 / 5; // 5 conditions
+    return this.trueConditionCount * percentagePerCondition;
   }
 
   //== onSubmit signup formBuilder

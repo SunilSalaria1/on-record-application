@@ -142,7 +142,50 @@ button {
   background-image: linear-gradient(to right, #ae0142, #c14830, #f44820, #f7cf20, #01ae8f, #30c17c);
 }
 
+.test-green {
+  color: green !important;
+}
 
-.testt-green{
-  color: green;
+.test-danger {
+  color: red !important;
+}
+
+.test-warning {
+  color: orange !important;
+}
+
+.default-color {
+  color: #000 !important;
+}
+
+//== indicator message
+.password-indicator-message {
+
+  .password-indicator-bar-message {
+    border-radius: 4px;
+  }
+}
+
+.test-green-message {
+  background-color: green !important;
+  border: 1px solid green;
+  color: white;
+}
+
+.test-danger-message {
+  background-color: red !important;
+  border: 1px solid red;
+  color: white;
+}
+
+.test-warning-message {
+  background-color: orange !important;
+  border: 1px solid orange;
+  color: white;
+}
+
+.default-color-message {
+  background-color: #000 !important;
+  border: 1px solid #000;
+  color: white;
 }
