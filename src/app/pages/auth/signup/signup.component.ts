@@ -21,7 +21,7 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
   selector: 'app-signup',
   standalone: true,
   imports: [MatButtonModule, MatCardModule, MatInputModule, MatIconModule, MatDividerModule, RouterOutlet, RouterLink,
-    RouterLink, RouterLinkActive, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, ReactiveFormsModule, CommonModule,NgxMaskDirective,
+    RouterLink, RouterLinkActive, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, ReactiveFormsModule, CommonModule, NgxMaskDirective,
     NgxMaskPipe],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss',
@@ -31,15 +31,18 @@ export class SignupComponent {
   constructor(private formBuilder: FormBuilder) { }
 
   //== labels 
-  firstName = "First Name";
-  lastName = "Last Name";
-  emailAddress = "Email Address";
-  mobileNumber = "Mobile Number";
-  selectGender = "Select Gender";
-  selectGenderList = ['Male', 'Female', 'Others'];
-  password = "Password";
-  confirmPassword = "Confirm Password";
-  signUpBtn = "Sign Up";
+  labels = {
+    firstName: "First Name",
+    lastName: "Last Name",
+    emailAddress: "Email Address",
+    mobileNumber: "Mobile Number",
+    selectGender: "Select Gender",
+    selectGenderList: ['Male', 'Female', 'Others'],
+    password: "Password",
+    confirmPassword: "Confirm Password",
+    signUpBtn: "Sign Up",
+  }
+
 
   //== signup formBuilder
   signUpForm = this.formBuilder.group({
@@ -118,7 +121,7 @@ export class SignupComponent {
     }
   }
 
-  testinput(){
+  testinput() {
     console.log(this.signUpForm.controls.mobileNumber.errors);
   }
 }

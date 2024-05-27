@@ -24,7 +24,7 @@
             <div class="row">
               <div class="col-12 mb-1">
                 <mat-form-field appearance="outline" class="w-100">
-                  <mat-label [innerText]="firstName"></mat-label>
+                  <mat-label [innerText]="labels.firstName"></mat-label>
                   <input matInput formControlName="firstName">
                   @if(signUpForm.get("firstName")?.value){
                   <mat-icon class="cursor-pointer" matSuffix (click)="signUpForm.get('firstName')?.reset()"><span
@@ -39,7 +39,7 @@
               </div>
               <div class="col-12 mb-1">
                 <mat-form-field appearance="outline" class="w-100">
-                  <mat-label [innerText]="lastName"></mat-label>
+                  <mat-label [innerText]="labels.lastName"></mat-label>
                   <input matInput formControlName="lastName">
                   @if(signUpForm.get("lastName")?.value){
                   <mat-icon class="cursor-pointer" matSuffix (click)="signUpForm.get('lastName')?.reset()"><span
@@ -54,7 +54,7 @@
               </div>
               <div class="col-12 mb-1">
                 <mat-form-field appearance="outline" class="w-100">
-                  <mat-label [innerText]="emailAddress"></mat-label>
+                  <mat-label [innerText]="labels.emailAddress"></mat-label>
                   <input matInput formControlName="emailAddress">
                   @if(signUpForm.get("emailAddress")?.value){
                   <mat-icon class="cursor-pointer" matSuffix (click)="signUpForm.get('emailAddress')?.reset()"><span
@@ -72,8 +72,8 @@
               </div>
               <div class="col-12 mb-1">
                 <mat-form-field appearance="outline" class="w-100">
-                  <mat-label [innerText]="mobileNumber"></mat-label>
-                  <input matInput formControlName="mobileNumber" mask="+00 00000-00000">
+                  <mat-label [innerText]="labels.mobileNumber"></mat-label>
+                  <input matInput formControlName="mobileNumber" mask="+00 00000-00000" placeholder="+91 00000-00000">
                   @if(signUpForm.get("mobileNumber")?.value){
                   <mat-icon class="cursor-pointer" matSuffix (click)="signUpForm.get('mobileNumber')?.reset()"><span
                       class="material-symbols-outlined">
@@ -90,9 +90,9 @@
               </div>
               <div class="col-12 mb-1">
                 <mat-form-field appearance="outline" class="w-100">
-                  <mat-label [innerText]="selectGender"></mat-label>
+                  <mat-label [innerText]="labels.selectGender"></mat-label>
                   <mat-select formControlName="selectGender">
-                    @for (item of selectGenderList; track item) {
+                    @for (item of labels.selectGenderList; track item) {
                     <mat-option value="one">{{item}}</mat-option>
                     } @empty {
                     <mat-option value="one">There are no items found.</mat-option>
@@ -105,7 +105,7 @@
               </div>
               <div class="col-12 mb-1">
                 <mat-form-field appearance="outline" class="w-100">
-                  <mat-label [innerText]="password"></mat-label>
+                  <mat-label [innerText]="labels.password"></mat-label>
                   <input matInput formControlName="password" (input)="test()"
                     [type]="passwordVisibleIcon ? 'password' : 'text'">
                   @if(signUpForm.get("password")?.value){
@@ -132,7 +132,7 @@
               </div>
               <div class="col-12 mb-1">
                 <mat-form-field appearance="outline" class="w-100">
-                  <mat-label [innerText]="confirmPassword"></mat-label>
+                  <mat-label [innerText]="labels.confirmPassword"></mat-label>
                   <input matInput formControlName="confirmPassword"
                     [type]="confirmPasswordVisibleIcon ? 'password' : 'text'">
                   @if(signUpForm.get("confirmPassword")?.value){
@@ -212,7 +212,7 @@
               </div>
 
               <div class="col-12">
-                <button mat-raised-button color="primary" class="px-4 fs-16 w-100 button-mh-56">{{signUpBtn}}</button>
+                <button mat-raised-button color="primary" class="px-4 fs-16 w-100 button-mh-56">{{labels.signUpBtn}}</button>
               </div>
               <div class="col-12 mt-4 text-center">
                 <span>Already a member?</span> <a routerLink="/login" class="ms-2 text-primary">Sign In</a>
