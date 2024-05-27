@@ -11,7 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -53,7 +53,23 @@ export class SignupComponent {
     selectGender: ['', Validators.required],
     password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()\\-_=+{}[\\]|\\\\:;"\'<>,.?/~`])[A-Za-z\\d!@#$%^&*()\\-_=+{}[\\]|\\\\:;"\'<>,.?/~`]{6,}$')]], //Password must be at least 6 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character
     confirmPassword: ['', Validators.required]
-  });
+  },
+    {
+      validators: this.passwordMatchValidator
+    }
+  );
+
+  //== custom validator password and confirm password
+  passwordMatchValidator(formGroup: FormGroup) {
+    const passwordControl = formGroup.get('password');
+    const confirmPasswordControl = formGroup.get('confirmPassword');
+
+    if (passwordControl?.value === confirmPasswordControl?.value) {
+      confirmPasswordControl?.setErrors(null);
+    } else {
+      confirmPasswordControl?.setErrors({ passwordMismatch: true });
+    }
+  }
 
   //== password visible icon 
   passwordVisibleIcon = true;
@@ -70,21 +86,21 @@ export class SignupComponent {
   test() {
     this.defaultColorDark = true; // Mark as touched when test function is called
     //for length
-    console.log(this.signUpForm.controls.password.value);
-    this.minLengthSix = (this.signUpForm.controls.password.value as string)?.length >= 6
+    console.log(this.signUpForm.controls['password'].value);
+    this.minLengthSix = (this.signUpForm.controls['password'].value as string)?.length >= 6
     //for uppercase
     const uppercasePattern = /[A-Z]/;
-    this.containsUppercase = uppercasePattern.test(this.signUpForm.controls.password.value as string);
+    this.containsUppercase = uppercasePattern.test(this.signUpForm.controls['password'].value as string);
     //for lowercase
     const lowercasePattern = /[a-z]/;
-    this.containsLowercase = lowercasePattern.test(this.signUpForm.controls.password.value as string);
+    this.containsLowercase = lowercasePattern.test(this.signUpForm.controls['password'].value as string);
 
     //number
     const arabicNumeralPattern = /\d/;
-    this.containsArabicNumerals = arabicNumeralPattern.test(this.signUpForm.controls.password.value as string);
+    this.containsArabicNumerals = arabicNumeralPattern.test(this.signUpForm.controls['password'].value as string);
     //special character
     const specialCharacterPattern = /[!@#$%^&*()\-=+{}[\]|\\:;"'<>,.?/~`]/;
-    this.containsSpecialCharacters = specialCharacterPattern.test(this.signUpForm.controls.password.value as string);
+    this.containsSpecialCharacters = specialCharacterPattern.test(this.signUpForm.controls['password'].value as string);
   }
 
   //indicator width calculator   
@@ -122,6 +138,6 @@ export class SignupComponent {
   }
 
   testinput() {
-    console.log(this.signUpForm.controls.mobileNumber.errors);
+    console.log(this.signUpForm.controls['mobileNumber'].errors);
   }
 }
