@@ -63,7 +63,7 @@ export class SignupComponent {
   passwordMatchValidator(formGroup: FormGroup) {
     const passwordControl = formGroup.get('password');
     const confirmPasswordControl = formGroup.get('confirmPassword');
-    if (passwordControl?.value.length && confirmPasswordControl?.value.length) {
+    if (passwordControl?.value && confirmPasswordControl?.value) {
       passwordControl?.value === confirmPasswordControl?.value ? confirmPasswordControl?.setErrors(null) : confirmPasswordControl?.setErrors({ passwordMismatch: true });
     }
   }
