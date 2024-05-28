@@ -30,7 +30,7 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 export class SignupComponent {
   constructor(private formBuilder: FormBuilder) { }
 
-  //== labels 
+  //== form labels 
   labels = {
     firstName: "First Name",
     lastName: "Last Name",
@@ -43,23 +43,34 @@ export class SignupComponent {
     signUpBtn: "Sign Up",
   }
 
+  //== password fields visible icon default state
+  passwordVisibleIcon = true;
+  confirmPasswordVisibleIcon = true;
 
-  //== signup formBuilder
+  //== validation required checks default states
+  minLengthSix: boolean = false;
+  containsUppercase: boolean = false;
+  containsLowercase: boolean = false;
+  containsArabicNumerals: boolean = false;
+  containsSpecialCharacters: Boolean = false;
+  defaultColorDark: boolean = false;
+
+  //== signup form form builder
   signUpForm = this.formBuilder.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     emailAddress: ['', [Validators.required, Validators.email]],
     mobileNumber: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{12}$")]],
     selectGender: ['', Validators.required],
-    password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()\\-_=+{}[\\]|\\\\:;"\'<>,.?/~`])[A-Za-z\\d!@#$%^&*()\\-_=+{}[\\]|\\\\:;"\'<>,.?/~`]{6,}$')]], //Password must be at least 6 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character
+    password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()\\-_=+{}[\\]|\\\\:;"\'<>,.?/~`])[A-Za-z\\d!@#$%^&*()\\-_=+{}[\\]|\\\\:;"\'<>,.?/~`]{6,}$')]], //password must be at least 6 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character
     confirmPassword: ['', Validators.required]
   },
     {
-      validators: this.passwordMatchValidator
+      validators: this.passwordMatchValidator //custom validators for password & confirm password fields
     }
   );
 
-  //== custom validator password and confirm password
+  //== custom validator for password a& confirm password fields
   passwordMatchValidator(formGroup: FormGroup) {
     const passwordControl = formGroup.get('password');
     const confirmPasswordControl = formGroup.get('confirmPassword');
@@ -68,22 +79,10 @@ export class SignupComponent {
     }
   }
 
-  //== password visible icon 
-  passwordVisibleIcon = true;
-  confirmPasswordVisibleIcon = true;
-
-  //validation required checks
-  minLengthSix: boolean = false;
-  containsUppercase: boolean = false;
-  containsLowercase: boolean = false;
-  containsArabicNumerals: boolean = false;
-  containsSpecialCharacters: Boolean = false;
-  defaultColorDark: boolean = false;
-
-  test() {
-    this.defaultColorDark = true; // Mark as touched when test function is called
+  //== add validation checks based on get password values
+  getPasswordValue() {
+    this.defaultColorDark = true;
     //for length
-    console.log(this.signUpForm.controls['password'].value);
     this.minLengthSix = (this.signUpForm.controls['password'].value as string)?.length >= 6
     //for uppercase
     const uppercasePattern = /[A-Z]/;
@@ -91,16 +90,15 @@ export class SignupComponent {
     //for lowercase
     const lowercasePattern = /[a-z]/;
     this.containsLowercase = lowercasePattern.test(this.signUpForm.controls['password'].value as string);
-
-    //number
+    //for number
     const arabicNumeralPattern = /\d/;
     this.containsArabicNumerals = arabicNumeralPattern.test(this.signUpForm.controls['password'].value as string);
-    //special character
+    //for special character
     const specialCharacterPattern = /[!@#$%^&*()\-=+{}[\]|\\:;"'<>,.?/~`]/;
     this.containsSpecialCharacters = specialCharacterPattern.test(this.signUpForm.controls['password'].value as string);
   }
 
-  //indicator width calculator   
+  //== indicator width calculator   
   get trueConditionCount() {
     return [
       this.minLengthSix,
@@ -111,13 +109,14 @@ export class SignupComponent {
     ].filter(condition => condition).length;
   }
 
+  //== get indicator width 
   get indicatorWidth() {
-    const percentagePerCondition = 100 / 5; // 5 conditions
+    const percentagePerCondition = 100 / 5; //5 conditions
     return this.trueConditionCount * percentagePerCondition;
   }
 
   //== password close icon click
-  passwordClose() {
+  passwordCloseIcon() {
     this.signUpForm.get('password')?.reset();
     this.minLengthSix = false;
     this.containsUppercase = false;
@@ -127,14 +126,10 @@ export class SignupComponent {
     this.defaultColorDark = false;
   }
 
-  //== onSubmit signup formBuilder
+  //== onSubmit signUpForm formBuilder
   onSubmit() {
     if (this.signUpForm.valid) {
       console.warn(this.signUpForm.value);
     }
-  }
-
-  testinput() {
-    console.log(this.signUpForm.controls['mobileNumber'].errors);
   }
 }

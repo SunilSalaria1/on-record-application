@@ -106,10 +106,10 @@
               <div class="col-12 mb-1">
                 <mat-form-field appearance="outline" class="w-100">
                   <mat-label [innerText]="labels.password"></mat-label>
-                  <input matInput formControlName="password" (input)="test()"
+                  <input matInput formControlName="password" (input)="getPasswordValue()"
                     [type]="passwordVisibleIcon ? 'password' : 'text'">
                   @if(signUpForm.get("password")?.value){
-                  <mat-icon class="cursor-pointer px-0" matSuffix (click)="passwordClose()"><span
+                  <mat-icon class="cursor-pointer px-0" matSuffix (click)="passwordCloseIcon()"><span
                       class="material-symbols-outlined">
                       close
                     </span></mat-icon>
@@ -152,15 +152,17 @@
                   @if (signUpForm.get("confirmPassword")?.hasError("required")) {
                   <mat-error>This is required</mat-error>
                   }@else if(signUpForm.get("confirmPassword")?.hasError('passwordMismatch')){
-                  <mat-error>Passwords must match</mat-error>
+                  <mat-error>Password & confirm password must match</mat-error>
                   }
                 </mat-form-field>
               </div>
-
               <div class="col-12 mb-1">
+                <!-- password indicator bar -->
                 <div class="password-indicator card-box-shadow">
                   <div class="password-indicator-bar" [style.width.%]="indicatorWidth"></div>
                 </div>
+                <!-- /password indicator bar -->
+                <!-- password indicator panel -->
                 <div class="password-indicator-panel">
                   <div class="password-indicator-message mb-3">
                     <div
@@ -211,8 +213,8 @@
                     </li>
                   </ul>
                 </div>
+                <!-- /password indicator panel -->
               </div>
-
               <div class="col-12">
                 <button mat-raised-button color="primary"
                   class="px-4 fs-16 w-100 button-mh-56">{{labels.signUpBtn}}</button>
