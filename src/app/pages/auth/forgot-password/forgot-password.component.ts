@@ -25,7 +25,8 @@ export class ForgotPasswordComponent {
 
   //== form labels 
   labels = {
-    emailAddress: "Email Address"   
+    emailAddress: "Email Address",
+    sendCodeBtn: "Send Code"
   }
 
   //== sign in form builder
