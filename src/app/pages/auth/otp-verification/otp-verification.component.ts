@@ -20,6 +20,9 @@ export class OtpVerificationComponent {
     verifyCodeBtn: "Verify Code"
   }
 
+  //== incorrect OTP entered
+  incorrectOtpEnter:boolean = false;
+
   //== sign in form builder
   otpVerificationForm = this.formBuilder.group({
     firstOtpControl: ['',Validators.required],
@@ -34,6 +37,9 @@ export class OtpVerificationComponent {
   onSubmit() {
     if (this.otpVerificationForm.valid) {
       console.warn(this.otpVerificationForm.value);
+    }
+    if(this.otpVerificationForm.invalid){
+      this.incorrectOtpEnter = true;
     }
   }
 }

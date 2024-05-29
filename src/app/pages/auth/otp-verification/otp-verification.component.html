@@ -29,7 +29,7 @@
               </div>
               <div class="col-2 p-1">
                 <mat-form-field appearance="outline" class="w-100 otp-verification-input">
-                  <input matInput maxlength="1" class="fw-bold text-center" formControlName="secondOtpControl">
+                  <input matInput maxlength="1" class="fw-bold text-center" formControlName="secondOtpControl">               
                 </mat-form-field>
               </div>
               <div class="col-2 p-1">
@@ -54,6 +54,13 @@
               </div>
             </div>
             <!-- /row -->
+            <div class="row">
+              <div class="col-12">
+                @if (incorrectOtpEnter == true) {
+                <mat-error>Incorrect OTP entered</mat-error>
+                }                
+              </div>
+            </div>
             <!-- row -->
             <div class="row">
               <div class="col-12 mt-1">
