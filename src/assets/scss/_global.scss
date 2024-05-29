@@ -8,6 +8,9 @@
 //== @import _variable.scss
 @import url('./_variables.scss');
 
+//@import _angular-mat-component-override.scss
+@import url('./_angular-mat-component-override.scss');
+
 //== @import _grid.scss
 @import url('./_grid.scss');
 
@@ -61,34 +64,14 @@ button {
   top: 0;
 }
 
-//== cursor pointer
-.cursor-pointer {
-  cursor: pointer;
-}
-
-/*================================================================================================
-                                  _global.scss [angular material component override]
- ================================================================================================*/
-
-//== form validations font size
-.mat-mdc-form-field-error {
-  font-size: 11px;
-}
-
-//== form validation * symbol hide
-.mdc-floating-label--required:not(.mdc-floating-label--hide-required-marker)::after {
-  display: none;
-}
-
-//== form validation label color gray
-.mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-floating-label,
-.mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-floating-label--float-above {
-  color: rgba(0, 0, 0, 0.6) !important;
-}
 
 /*================================================================================================
                                   _global.scss [pages vise common scss]
  ================================================================================================*/
+
+/*=====================================
+             auth pages                    
+ ======================================*/
 
 //== auth pages background
 .auth-page-bg {
@@ -111,7 +94,9 @@ button {
   }
 }
 
-
+/*=====================================
+           password indicator                    
+ ======================================*/
 
 //======= indicator
 .password-indicator {
