@@ -3,9 +3,8 @@
 @use '@angular/material' as mat;
 // Plus imports for other components in your app.
 
-
 // @import _variable.scss
-@use 'assets/scss/_variables.scss' as sass;
+@use 'assets/scss/_variables.scss' as variable;
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -20,12 +19,14 @@
 // hue. Available color palettes: https://material.io/design/color/
 // $custom-color: mat.define-palette((default: #FF5733), 100%);
 $on-record-primary: (
-  default: sass.$custom-primary,
+  default: variable.$primary-color,
 );
-$on-record-accent: mat.define-palette(mat.$pink-palette);
-
-// The warn palette is optional (defaults to red).
-$on-record-warn: mat.define-palette(mat.$red-palette);
+$on-record-accent: (
+  default: variable.$accent-color,
+);
+$on-record-warn: (
+  default: variable.$warn-color,
+);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
