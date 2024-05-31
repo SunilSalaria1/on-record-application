@@ -43,9 +43,15 @@ $font-weight-medium: 500;
 $font-weight-semibold: 600;
 $font-weight-bold: 700;
 
-//==password indicator
+//== password indicator
 $indicator-border-color: #d8d8dd;
 $indicator-gradient: linear-gradient(to right, #ae0142, #c14830, #f44820, #f7cf20, #01ae8f, #30c17c);
 
+//== box shadow
+$box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+$box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+$box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+
 //== other global colors
 $bg-shade-color: rgba(0, 0, 0, 0.5);
+$border: 1px solid #495057;
