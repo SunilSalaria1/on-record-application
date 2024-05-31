@@ -37,20 +37,20 @@ body {
 
 //== button
 button {
-  font-family: 'Poppins', sans-serif;
+  font-family: variable.$button-font-family;
 }
 
 .button-mh-56 {
-  min-height: 56px !important;
+  min-height: variable.$button-min-height !important;
 }
 
 //== card
 .card-box-shadow {
-  box-shadow: 0 4px 20px variable.$box-shadow-color !important;
+  box-shadow: 0 4px 20px variable.$card-box-shadow !important;
 }
 
 .card-border-radius {
-  border-radius: 20px !important;
+  border-radius: variable.$card-border-radius !important;
 }
 
 //== background-shade
@@ -101,7 +101,7 @@ button {
 .password-indicator {
   height: 10px;
   border-radius: 10px;
-  border: solid 1px variable.$border-color;
+  border: solid 1px variable.$indicator-border-color;
   background-color: variable.$white-color;
   overflow: hidden;
   margin-bottom: 25px;

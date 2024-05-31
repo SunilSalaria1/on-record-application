@@ -18,6 +18,8 @@
  white-space
  visibility
  cursor pointer
+ box shadow
+ border
 ===========================================================================================*/
 
 //== heading tags h1,h2,h3,h4,h5,h6
@@ -104,28 +106,44 @@ h6,
 
 //== font-size
 .fs-12 {
-  font-size: 0.75rem !important;
+  font-size: variable.$font-size-12 !important;
 }
 
 .fs-13 {
-  font-size: 0.813rem !important;
+  font-size: variable.$font-size-13 !important;
 }
 
 .fs-14 {
-  font-size: 0.874rem !important;
+  font-size: variable.$font-size-14 !important;
 }
 
 .fs-15 {
-  font-size: 0.938rem !important;
+  font-size: variable.$font-size-15 !important;
 }
 
 .fs-16 {
-  font-size: 1rem !important;
+  font-size: variable.$font-size-16 !important;
 }
 
 //== color
 .text-primary {
   color: variable.$primary-color !important;
+}
+
+.text-secondary {
+  color: variable.$secondary-color !important;
+}
+
+.text-warning {
+  color: variable.$warning-color !important;
+}
+
+.text-success {
+  color: variable.$success-color !important;
+}
+
+.text-light {
+  color: variable.$light-color !important;
 }
 
 .text-dark {
@@ -145,16 +163,36 @@ h6,
   background-color: variable.$primary-color !important;
 }
 
+.bg-secondary {
+  background-color: variable.$secondary-color !important;
+}
+
+.bg-warning {
+  background-color: variable.$warning-color !important;
+}
+
+.bg-success {
+  background-color: variable.$success-color !important;
+}
+
+.bg-danger {
+  background-color: variable.$danger-color !important;
+}
+
+.bg-light {
+  background-color: variable.$light-color !important;
+}
+
+.bg-transparent {
+  background-color: variable.$transparent-color !important;
+}
+
 .bg-dark {
   background-color: variable.$dark-color !important;
 }
 
 .bg-white {
   background-color: variable.$white-color !important;
-}
-
-.bg-danger {
-  background-color: variable.$danger-color !important;
 }
 
 //== paragraph tags
@@ -269,23 +307,23 @@ p {
 }
 
 .fw-light {
-  font-weight: 300 !important;
+  font-weight: variable.$font-weight-light !important;
 }
 
 .fw-normal {
-  font-weight: 400 !important;
+  font-weight: variable.$font-weight-normal !important;
 }
 
 .fw-medium {
-  font-weight: 500 !important;
+  font-weight: variable.$font-weight-medium !important;
 }
 
 .fw-semibold {
-  font-weight: 600 !important;
+  font-weight: variable.$font-weight-semibold !important;
 }
 
 .fw-bold {
-  font-weight: 700 !important;
+  font-weight: variable.$font-weight-bold !important;
 }
 
 .fw-bolder {
@@ -352,4 +390,114 @@ p {
 //== cursor pointer
 .cursor-pointer {
   cursor: pointer;
+}
+
+//== box shadow
+.shadow {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.shadow-sm {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+.shadow-lg {
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+
+.shadow-none {
+  box-shadow: none !important;
+}
+
+//== border
+.border {
+  border: 1px solid #495057 !important;
+}
+
+.border-0 {
+  border: 0 !important;
+}
+
+.border-top {
+  border-top: 1px solid #495057 !important;
+}
+
+.border-top-0 {
+  border-top: 0 !important;
+}
+
+.border-end {
+  border-right: 1px solid #495057 !important;
+}
+
+.border-end-0 {
+  border-right: 0 !important;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #495057 !important;
+}
+
+.border-bottom-0 {
+  border-bottom: 0 !important;
+}
+
+.border-start {
+  border-left: 1px solid #495057 !important;
+}
+
+.border-start-0 {
+  border-left: 0 !important;
+}
+
+.border-primary {
+  border-color: variable.$primary-color !important;
+}
+
+.border-secondary {
+  border-color: variable.$secondary-color !important;
+}
+
+.border-success {
+  border-color: variable.$success-color !important;
+}
+
+.border-warning {
+  border-color: variable.$warning-color !important;
+}
+
+.border-danger {
+  border-color: variable.$danger-color !important;
+}
+
+.border-light {
+  border-color: variable.$light-color !important;
+}
+
+.border-dark {
+  border-color: variable.$dark-color !important;
+}
+
+.border-white {
+  border-color: variable.$white-color !important;
+}
+
+.border-1 {
+  border-width: 1px !important;
+}
+
+.border-2 {
+  border-width: 2px !important;
+}
+
+.border-3 {
+  border-width: 3px !important;
+}
+
+.border-4 {
+  border-width: 4px !important;
+}
+
+.border-5 {
+  border-width: 5px !important;
 }
