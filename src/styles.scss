@@ -22,11 +22,34 @@ $on-record-primary: (
   default: variable.$primary-color,
 );
 $on-record-accent: (
-  default: variable.$accent-color,
+  default: variable.$secondary-color,
 );
 $on-record-warn: (
-  default: variable.$warn-color,
+  default: variable.$warning-color,
 );
+$on-record-success: (
+  default: variable.$success-color,
+);
+$on-record-info: (
+  default: variable.$info-color,
+);
+$on-record-danger: (
+  default: variable.$danger-color,
+);
+$on-record-light: (
+  default: variable.$light-color,
+);
+$on-record-dark: (
+  default: variable.$dark-color,
+);
+$on-record-black: (
+  default: variable.$black-color,
+);
+$on-record-white: (
+  default: variable.$white-color,
+);
+
+
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
