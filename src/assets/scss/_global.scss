@@ -1,12 +1,11 @@
+//== @import _variable.scss
+@use './_variables.scss' as variable;
 /*================================================================================================
                                   _global.scss [global style classes]
  ================================================================================================*/
 
 //== @import font-family [Poppins]
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-// //== @import _variable.scss
-// @import url('./_variables.scss');
 
 //@import _angular-mat-component-override.scss
 @import url('./_angular-mat-component-override.scss');
@@ -30,8 +29,8 @@ body {
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.5;
-  color: #000;
-  background-color: #F5F5F5;
+  color: variable.$body-color;
+  background-color: variable.$body-bg-color;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -47,7 +46,7 @@ button {
 
 //== card
 .card-box-shadow {
-  box-shadow: 0 4px 20px #2f8fe812 !important;
+  box-shadow: 0 4px 20px variable.$box-shadow-color !important;
 }
 
 .card-border-radius {
@@ -56,7 +55,7 @@ button {
 
 //== background-shade
 .background-shade {
-  background: rgba(0, 0, 0, 0.5);
+  background: variable.$bg-shade-color;
   position: fixed;
   left: 0;
   right: 0;
@@ -81,7 +80,7 @@ button {
 .login-with-other {
   position: absolute;
   top: -12px;
-  background: white;
+  background: variable.$white-color;
 }
 
 //== otp-verification page
@@ -102,8 +101,8 @@ button {
 .password-indicator {
   height: 10px;
   border-radius: 10px;
-  border: solid 1px #d8d8dd;
-  background-color: #fff;
+  border: solid 1px variable.$border-color;
+  background-color: variable.$white-color;
   overflow: hidden;
   margin-bottom: 25px;
 }
@@ -112,8 +111,8 @@ button {
   height: 100%;
   max-width: 100%;
   transition: width 200ms;
-  -webkit-mask: linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(variable.$white-color 0 0);
+  mask: linear-gradient(variable.$white-color 0 0);
 }
 
 .password-indicator .password-indicator-bar::before {
@@ -123,23 +122,23 @@ button {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: linear-gradient(to right, #ae0142, #c14830, #f44820, #f7cf20, #01ae8f, #30c17c);
+  background-image: variable.$indicator-gradient;
 }
 
 .test-green {
-  color: green !important;
+  color: variable.$success-color !important;
 }
 
 .test-danger {
-  color: red !important;
+  color: variable.$danger-color !important;
 }
 
 .test-warning {
-  color: orange !important;
+  color: variable.$warning-color !important;
 }
 
 .default-color {
-  color: #000 !important;
+  color: variable.$dark-color !important;
 }
 
 //== indicator message
@@ -151,25 +150,25 @@ button {
 }
 
 .test-green-message {
-  background-color: green !important;
-  border: 1px solid green;
-  color: white;
+  background-color: variable.$success-color !important;
+  border: 1px solid variable.$success-color;
+  color: variable.$white-color;
 }
 
 .test-danger-message {
-  background-color: red !important;
-  border: 1px solid red;
-  color: white;
+  background-color: variable.$danger-color !important;
+  border: 1px solid variable.$danger-color;
+  color: variable.$white-color;
 }
 
 .test-warning-message {
-  background-color: orange !important;
-  border: 1px solid orange;
-  color: white;
+  background-color: variable.$warning-color !important;
+  border: 1px solid variable.$warning-color;
+  color: variable.$white-color;
 }
 
 .default-color-message {
-  background-color: #000 !important;
-  border: 1px solid #000;
-  color: white;
+  background-color: variable.$dark-color !important;
+  border: 1px solid variable.$dark-color;
+  color: variable.$white-color;
 }

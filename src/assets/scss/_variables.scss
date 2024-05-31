@@ -2,12 +2,27 @@
                                   common variables for theming
  ================================================================================================*/
 //== colors
-$primary-color: #3f51b5;     
-$secondary-color: #6c757d;  
-$warning-color: #ffc107;   
-$success-color: #198754;  
-$danger-color: #dc3545; 
-$light-color: #f8f9fa; 
-$dark-color: #000; 
-$white-color: #fff; 
-$transparent-color:transparent;
+$primary-color: #3f51b5;
+$secondary-color: #6c757d;
+$warning-color: #ffc107;
+$success-color: #198754;
+$danger-color: #dc3545;
+$light-color: #f8f9fa;
+$dark-color: #000;
+$white-color: #fff;
+$transparent-color: transparent;
+
+//== body colors
+$body-color: #000;
+$body-bg-color: #F5F5F5;
+
+//== headings variables
+$heading-color: #000;
+$heading-line-height: 1.2;
+$heading-font-weight: 500;
+
+//== other global colors
+$box-shadow-color: #2f8fe812;
+$bg-shade-color: rgba(0, 0, 0, 0.5);
+$border-color: #d8d8dd;
+$indicator-gradient: linear-gradient(to right, #ae0142, #c14830, #f44820, #f7cf20, #01ae8f, #30c17c);
