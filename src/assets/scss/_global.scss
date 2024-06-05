@@ -8,7 +8,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 //@import _angular-mat-component-override.scss
-@import url('./_angular-mat-component-override.scss');
+@import url('./_mat-component-override.scss');
 
 //== @import _grid.scss
 @import url('./_grid.scss');
@@ -124,22 +124,6 @@ button {
   background-image: variable.$indicator-gradient;
 }
 
-.test-green {
-  color: variable.$success-color !important;
-}
-
-.test-danger {
-  color: variable.$danger-color !important;
-}
-
-.test-warning {
-  color: variable.$warning-color !important;
-}
-
-.default-color {
-  color: variable.$dark-color !important;
-}
-
 //== indicator message
 .password-indicator-message {
 
@@ -148,26 +132,26 @@ button {
   }
 }
 
-.test-green-message {
+.default-indicator-message {
+  background-color: variable.$dark-color !important;
+  border: 1px solid variable.$dark-color;
+  color: variable.$white-color;
+}
+
+.success-indicator-message {
   background-color: variable.$success-color !important;
   border: 1px solid variable.$success-color;
   color: variable.$white-color;
 }
 
-.test-danger-message {
+.danger-indicator-message {
   background-color: variable.$danger-color !important;
   border: 1px solid variable.$danger-color;
   color: variable.$white-color;
 }
 
-.test-warning-message {
+.warning-indicator-message {
   background-color: variable.$warning-color !important;
   border: 1px solid variable.$warning-color;
-  color: variable.$white-color;
-}
-
-.default-color-message {
-  background-color: variable.$dark-color !important;
-  border: 1px solid variable.$dark-color;
   color: variable.$white-color;
 }

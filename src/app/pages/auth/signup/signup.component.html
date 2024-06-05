@@ -167,7 +167,7 @@
                   <div class="password-indicator-message mb-3">
                     <div
                       class="password-indicator-bar-message fs-13 d-flex align-items-center w-100 card-box-shadow p-2"
-                      [ngClass]="{'default-color-message': trueConditionCount == 0, 'test-danger-message': trueConditionCount <= 2 && trueConditionCount > 0, 'test-warning-message': trueConditionCount > 2 && trueConditionCount <= 4, 'test-green-message': trueConditionCount == 5}">
+                      [ngClass]="{'default-indicator-message': trueConditionCount == 0, 'danger-indicator-message': trueConditionCount <= 2 && trueConditionCount > 0, 'warning-indicator-message': trueConditionCount > 2 && trueConditionCount <= 4, 'success-indicator-message': trueConditionCount == 5}">
                       @if (trueConditionCount == 0) {
                       <mat-icon>emoji_objects</mat-icon> <span class="ms-1">Let's build a strong password
                         together.</span>
@@ -184,29 +184,29 @@
 
                   <ul class="mt-0 px-2 fs-13 mb-3">
                     <li class="mb-1 d-flex align-items-center"
-                      [ngClass]="{'test-green': minLengthSix, 'test-danger': !minLengthSix && defaultColorDark, 'default-color' : !defaultColorDark}">
+                      [ngClass]="{'text-success': minLengthSix, 'text-danger': !minLengthSix && defaultColorDark, 'text-dark' : !defaultColorDark}">
                       <mat-icon>
                         {{minLengthSix ? 'check_circle' : 'error'}}
                       </mat-icon><span class="ms-2">The minimum password length is 6 characters</span>
                     </li>
                     <li class="mb-1 d-flex align-items-center"
-                      [ngClass]="{'test-green': containsUppercase, 'test-danger': !containsUppercase && defaultColorDark, 'default-color' : !defaultColorDark}">
+                      [ngClass]="{'text-success': containsUppercase, 'text-danger': !containsUppercase && defaultColorDark, 'text-dark' : !defaultColorDark}">
                       <mat-icon>{{containsUppercase ? 'check_circle' : 'error'}}</mat-icon> <span class="ms-2">English
                         uppercase letters [A, B, C, … Z]</span>
                     </li>
                     <li class="mb-1 d-flex align-items-center"
-                      [ngClass]="{'test-green': containsLowercase, 'test-danger': !containsLowercase && defaultColorDark, 'default-color' : !defaultColorDark}">
+                      [ngClass]="{'text-success': containsLowercase, 'text-danger': !containsLowercase && defaultColorDark, 'text-dark' : !defaultColorDark}">
                       <mat-icon>{{containsLowercase ? 'check_circle' : 'error'}}</mat-icon> <span class="ms-2">English
                         lowercase letters [a, b, c, … z]</span>
                     </li>
                     <li class="mb-1 d-flex align-items-center"
-                      [ngClass]="{'test-green': containsArabicNumerals, 'test-danger': !containsArabicNumerals && defaultColorDark, 'default-color' : !defaultColorDark}">
+                      [ngClass]="{'text-success': containsArabicNumerals, 'text-danger': !containsArabicNumerals && defaultColorDark, 'text-dark' : !defaultColorDark}">
                       <mat-icon>{{containsArabicNumerals ? 'check_circle' : 'error'}}</mat-icon> <span
                         class="ms-2">Westernized
                         Arabic numerals [0, 1, 2, … 9]</span>
                     </li>
                     <li class="mb-1 d-flex align-items-center"
-                      [ngClass]="{'test-green': containsSpecialCharacters, 'test-danger': !containsSpecialCharacters && defaultColorDark, 'default-color' : !defaultColorDark}">
+                      [ngClass]="{'text-success': containsSpecialCharacters, 'text-danger': !containsSpecialCharacters && defaultColorDark, 'text-dark' : !defaultColorDark}">
                       <mat-icon>{{containsSpecialCharacters ? 'check_circle' : 'error'}}</mat-icon> <span
                         class="ms-2">Special
                         characters [!#$%^&*-?/~`]</span>
