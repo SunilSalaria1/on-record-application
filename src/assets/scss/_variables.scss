@@ -11,10 +11,12 @@ $light-color: #f8f9fa;
 $dark-color: #000;
 $white-color: #fff;
 $transparent-color: transparent;
+$border-color:#495057;
 
 //== body colors
 $body-color: #000;
 $body-bg-color: #F5F5F5;
+$font-family-poppins: 'Poppins', sans-serif;
 
 //== headings variables
 $heading-color: #000;
@@ -22,11 +24,10 @@ $heading-line-height: 1.2;
 $heading-font-weight: 500;
 
 //== button variables
-$button-font-family: 'Poppins', sans-serif;
 $button-min-height: 56px;
 
 //== card variables
-$card-box-shadow: #2f8fe812;
+$card-box-shadow: 0 4px 20px #2f8fe812;
 $card-border-radius: 20px;
 
 //== font size
@@ -54,4 +55,3 @@ $box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
 
 //== other global colors
 $bg-shade-color: rgba(0, 0, 0, 0.5);
-$border: 1px solid #495057;

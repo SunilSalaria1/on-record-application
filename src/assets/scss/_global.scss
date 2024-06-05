@@ -25,9 +25,9 @@ body {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
+  font-family: variable.$font-family-poppins;
+  font-weight: variable.$font-weight-normal;
+  font-size: variable.$font-size-16;
   line-height: 1.5;
   color: variable.$body-color;
   background-color: variable.$body-bg-color;
@@ -37,7 +37,7 @@ body {
 
 //== button
 button {
-  font-family: variable.$button-font-family;
+  font-family: variable.$font-family-poppins;
 }
 
 .button-mh-56 {
@@ -46,7 +46,7 @@ button {
 
 //== card
 .card-box-shadow {
-  box-shadow: 0 4px 20px variable.$card-box-shadow !important;
+  box-shadow: variable.$card-box-shadow !important;
 }
 
 .card-border-radius {
