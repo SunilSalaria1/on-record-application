@@ -1,3 +1,5 @@
+//== @import _variable.scss
+@use './_variables.scss' as variable;
 /*================================================================================================
                                   _global.scss [angular material component override]
  ================================================================================================*/
@@ -8,7 +10,7 @@
 
 //== form validations font size
 .mat-mdc-form-field-error {
-    font-size: 11px;
+    font-size: variable.$font-size-11;
 }
 
 //== form validation * symbol hide
@@ -19,5 +21,5 @@
 //== form validation label color gray
 .mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-floating-label,
 .mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-floating-label--float-above {
-    color: rgba(0, 0, 0, 0.6) !important;
+    color: variable.$label-color !important;
 }
