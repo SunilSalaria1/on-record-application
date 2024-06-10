@@ -33,6 +33,12 @@ export class OtpVerificationComponent {
     sixthOtpControl: ['',Validators.required],
   });
 
+
+  controlValue(event:any){
+    console.log(this.otpVerificationForm.value);
+    console.log(event.target.value);
+  }
+
   //== onSubmit signInForm formBuilder
   onSubmit() {
     if (this.otpVerificationForm.valid) {
