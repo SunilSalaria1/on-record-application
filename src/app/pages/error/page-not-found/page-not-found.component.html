@@ -1,18 +1,18 @@
 <!-- section-->
 <section class="container-fluid min-vh-100 w-100">
+  <div>
+    <img src="/assets/images/not-found.svg" height="200" style="position: absolute;left: 0;bottom: 0;" />
+  </div>
   <!-- /background-shade -->
   <div class="row justify-content-center align-items-center min-vh-100">
-    <div class="col-xxl-2 col-lg-3 col-md-4 col-12">
-      <img src="/assets/images/not-found.svg" height="200"/>
-    </div>
-    <div class="col-xxl-4 col-lg-7 col-md-8 col-12">
+    <div class="col-xxl-4 col-lg-6 col-md-8 col-12">
       <h1 class="m-0 fw-bold">On Record</h1>
       <div class="mt-2"><span class="fw-bold">Error Code</span><span class="text-danger fw-bold"> 404</span>
       </div>
       <div class="mt-2 mb-3">
         <h6 class="text-danger fw-bold" [innerText]="ErrorTitle"></h6>
         <div [innerText]="ErrorDescription"></div>
-        </div>
+      </div>
       <button mat-raised-button color="primary" class="p-4 fs-16 d-flex align-items-center" (click)="goBack()">
         <mat-icon class="h-auto">
           <span class="material-symbols-outlined">
@@ -22,7 +22,6 @@
         <span [innerText]="goBackBtn"></span>
       </button>
     </div>
-   
   </div>
 </section>
 <!-- /section-->
