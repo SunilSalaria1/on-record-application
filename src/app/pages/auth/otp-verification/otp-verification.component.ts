@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -13,7 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   styleUrl: './otp-verification.component.scss'
 })
 export class OtpVerificationComponent {
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private elementRef: ElementRef) { }
 
   //== form labels 
   labels = {
@@ -33,16 +33,34 @@ export class OtpVerificationComponent {
     sixthOtpControl: ['',Validators.required],
   });
 
+  //== get input elements
+  get inputs() {
+    return this.elementRef.nativeElement.querySelectorAll('input');
+  }
 
-  controlValue(event:any){
-    console.log(this.otpVerificationForm.value);
-    console.log(event.target.value);
+  //== focus next input on input change
+  onFocusNextInput(event: Event, index: number) {
+    if ((event.target as HTMLInputElement).value.length === 1) {
+      if (index < this.inputs.length - 1) {
+        this.inputs[index + 1].focus();
+      }
+    }
+  }
+
+  //== focus previous input on backspace
+  onFocusPreviousInput(event: KeyboardEvent, index: number) {
+    if (event.key === 'Backspace' && (event.target as HTMLInputElement).value.length === 0) {
+      if (index > 0) {
+        this.inputs[index - 1].focus();
+      }
+    }
   }
 
   //== onSubmit signInForm formBuilder
   onSubmit() {
     if (this.otpVerificationForm.valid) {
       console.warn(this.otpVerificationForm.value);
+      this.incorrectOtpEnter = false;
     }
     if(this.otpVerificationForm.invalid){
       this.incorrectOtpEnter = true;

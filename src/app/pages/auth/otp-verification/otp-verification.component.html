@@ -13,7 +13,7 @@
             <h1 class="m-0 fw-bold">On Record</h1>
           </mat-card-title>
           <mat-card-subtitle><span class="fw-bold text-dark">Verification code</span> sent to +91
-            8968594268</mat-card-subtitle>
+            896859XXXX</mat-card-subtitle>
         </mat-card-header>
         <!-- /mat card header -->
         <!-- mat card actions -->
@@ -24,32 +24,38 @@
             <div class="row px-3">
               <div class="col-2 p-1">
                 <mat-form-field appearance="outline" class="w-100 otp-verification-input">
-                  <input matInput maxlength="1" class="fw-bold text-center" formControlName="firstOtpControl" (input)="controlValue($event)">
+                  <input matInput maxlength="1" class="fw-bold text-center" formControlName="firstOtpControl"
+                    (input)="onFocusNextInput($event, 0)" (keydown)="onFocusPreviousInput($event, 0)">
                 </mat-form-field>
               </div>
               <div class="col-2 p-1">
                 <mat-form-field appearance="outline" class="w-100 otp-verification-input">
-                  <input matInput maxlength="1" class="fw-bold text-center" formControlName="secondOtpControl" (input)="controlValue($event)">               
+                  <input matInput maxlength="1" class="fw-bold text-center" formControlName="secondOtpControl"
+                    (input)="onFocusNextInput($event, 1)" (keydown)="onFocusPreviousInput($event, 1)">
                 </mat-form-field>
               </div>
               <div class="col-2 p-1">
                 <mat-form-field appearance="outline" class="w-100 otp-verification-input">
-                  <input matInput maxlength="1" class="fw-bold text-center" formControlName="thirdOtpControl" (input)="controlValue($event)">
+                  <input matInput maxlength="1" class="fw-bold text-center" formControlName="thirdOtpControl"
+                    (input)="onFocusNextInput($event, 2)" (keydown)="onFocusPreviousInput($event, 2)">
                 </mat-form-field>
               </div>
               <div class="col-2 p-1">
                 <mat-form-field appearance="outline" class="w-100 otp-verification-input">
-                  <input matInput maxlength="1" class="fw-bold text-center" formControlName="fourthOtpControl" (input)="controlValue($event)">
+                  <input matInput maxlength="1" class="fw-bold text-center" formControlName="fourthOtpControl"
+                    (input)="onFocusNextInput($event, 3)" (keydown)="onFocusPreviousInput($event, 3)">
                 </mat-form-field>
               </div>
               <div class="col-2 p-1">
                 <mat-form-field appearance="outline" class="w-100 otp-verification-input">
-                  <input matInput maxlength="1" class="fw-bold text-center" formControlName="fifthOtpControl" (input)="controlValue($event)">
+                  <input matInput maxlength="1" class="fw-bold text-center" formControlName="fifthOtpControl"
+                    (input)="onFocusNextInput($event, 4)" (keydown)="onFocusPreviousInput($event, 4)">
                 </mat-form-field>
               </div>
               <div class="col-2 p-1">
                 <mat-form-field appearance="outline" class="w-100 otp-verification-input">
-                  <input matInput maxlength="1" class="fw-bold text-center" formControlName="sixthOtpControl" (input)="controlValue($event)">
+                  <input matInput maxlength="1" class="fw-bold text-center" formControlName="sixthOtpControl"
+                    (input)="onFocusNextInput($event, 5)" (keydown)="onFocusPreviousInput($event, 5)">
                 </mat-form-field>
               </div>
             </div>
@@ -58,7 +64,7 @@
               <div class="col-12">
                 @if (incorrectOtpEnter == true) {
                 <mat-error>Incorrect OTP entered</mat-error>
-                }            
+                }
               </div>
             </div>
             <!-- row -->
@@ -72,7 +78,6 @@
                 <span>Didn't receive an OTP?</span> <a href="#" class="ms-2 text-primary">Resend Code</a>
               </div>
             </div>
-            <!-- /row -->
           </form>
           <!-- /login view form -->
         </mat-card-actions>
