@@ -103,6 +103,14 @@ button {
   height: 225px;
 }
 
+.cloud-svg {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  transform: rotate(-180deg);
+}
+
 /*=====================================
            password indicator                    
  ======================================*/
