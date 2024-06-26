@@ -25,7 +25,6 @@ export class SnackbarService {
       data: {
         message: config.message,
         icon: config.icon || 'default',
-       
       },
       duration: config.duration || 500000,
       horizontalPosition: config.horizontalPosition || 'center',

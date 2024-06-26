@@ -1,1 +1,12 @@
-<span>{{ data.message }}</span>
+<div class="d-flex align-items-center">
+    <!-- @if(data.icon == "success"){
+    <mat-icon material-symbols-outlined>check_circle</mat-icon>
+    } @else if(data.icon == "danger"){
+    <mat-icon material-symbols-outlined>error</mat-icon>
+    }
+    @else if(data.icon == "default"){
+    <mat-icon material-symbols-outlined>circle_notifications</mat-icon>
+    } -->
+    <mat-icon material-symbols-outlined>circle_notifications</mat-icon>
+    <span class="ms-2">{{ data.message }}</span>
+</div>
