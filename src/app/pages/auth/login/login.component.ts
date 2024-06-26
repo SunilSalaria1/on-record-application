@@ -42,12 +42,17 @@ export class LoginComponent {
   //== onSubmit signInForm formBuilder
   onSubmit() {
     if (this.signInForm.valid) {
+      if (this.signInForm.controls.emailAddress.value === 'test@example.com' && this.signInForm.controls.password.value === '123') {
+        this.snackBarService.openSnackBar({
+          message: 'Login successful!',
+          panelClass: 'snackbar-success'
 
-      if (this.signInForm.controls.emailAddress.value === 'test@example.com' && this.signInForm.controls.password.value === 'password123') {
-        this.snackBarService.openSnackBar('Login successful!');
-        console.warn(this.signInForm.value);
+        });
       } else {
-        this.snackBarService.openSnackBar('Login failed! Incorrect email or password.');
+        this.snackBarService.openSnackBar({
+          message: 'Login failed! Incorrect email or password.',
+          panelClass: 'snackbar-danger'
+        });
       }
     }
   }

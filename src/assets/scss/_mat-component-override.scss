@@ -5,6 +5,26 @@
  ================================================================================================*/
 
 /*=====================================
+       snackbar override                    
+ ======================================*/
+
+//== snackbar-colors
+.snackbar-success .mdc-snackbar__surface {
+    background-color: variable.$success-color !important;
+    color: white !important;
+}
+
+.snackbar-danger .mdc-snackbar__surface {
+    background-color: variable.$danger-color !important;
+    color: white !important;
+}
+
+.snackbar-default .mdc-snackbar__surface {
+    background-color: variable.$dark-color !important;
+    color: white !important;
+}
+
+/*=====================================
        form validation override                    
  ======================================*/
 
