@@ -10,6 +10,7 @@ interface SnackbarConfig {
   backgroundColor?: string;
   textColor?: string;
   panelClass?: string | string[];
+  icon?: 'success' | 'danger' | 'default';
 }
 
 @Injectable({
@@ -23,8 +24,8 @@ export class SnackbarService {
     this.snackBar.openFromComponent(SnackbarComponent, {
       data: {
         message: config.message,
-        backgroundColor: config.backgroundColor || 'defaultBgColor',
-        textColor: config.textColor || 'defaultTextColor'
+        icon: config.icon || 'default',
+       
       },
       duration: config.duration || 500000,
       horizontalPosition: config.horizontalPosition || 'center',
