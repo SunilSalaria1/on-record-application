@@ -1,22 +1,13 @@
-import { Component } from '@angular/core';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { Component, Inject } from '@angular/core';
+import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-snackbar',
   standalone: true,
-  imports: [MatSnackBarModule],
+  imports: [],
   templateUrl: './snackbar.component.html',
   styleUrl: './snackbar.component.scss'
 })
 export class SnackbarComponent {
-  constructor(private _snackBar: MatSnackBar) {}
-  snackbarMessage = "Snack bar working successfully";
-  openSnackBar() {
-    this._snackBar.open(this.snackbarMessage, "Close", {
-      duration: 5 * 1000,
-      horizontalPosition: "center",
-      verticalPosition : "top"
-    });
-  }
+  constructor(@Inject(MAT_SNACK_BAR_DATA) public data: any) { }
 }

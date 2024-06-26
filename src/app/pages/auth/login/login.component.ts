@@ -9,6 +9,7 @@ import { RouterLink } from '@angular/router';
 import { RouterLinkActive } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
+import { SnackbarService } from '../../../shared/services/snackbar.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private snackBarService: SnackbarService) { }
 
   //== form labels 
   labels = {
@@ -41,7 +42,13 @@ export class LoginComponent {
   //== onSubmit signInForm formBuilder
   onSubmit() {
     if (this.signInForm.valid) {
-      console.warn(this.signInForm.value);
+
+      if (this.signInForm.controls.emailAddress.value === 'test@example.com' && this.signInForm.controls.password.value === 'password123') {
+        this.snackBarService.openSnackBar('Login successful!');
+        console.warn(this.signInForm.value);
+      } else {
+        this.snackBarService.openSnackBar('Login failed! Incorrect email or password.');
+      }
     }
   }
 }
