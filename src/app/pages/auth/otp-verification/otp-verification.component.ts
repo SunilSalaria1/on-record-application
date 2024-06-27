@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SnackbarService } from '../../../shared/services/snackbar.service';
 
 @Component({
   selector: 'app-otp-verification',
@@ -13,7 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   styleUrl: './otp-verification.component.scss'
 })
 export class OtpVerificationComponent {
-  constructor(private formBuilder: FormBuilder, private elementRef: ElementRef) { }
+  constructor(private formBuilder: FormBuilder, private elementRef: ElementRef, private snackBarService: SnackbarService) { }
 
   //== form labels 
   labels = {
@@ -21,16 +22,16 @@ export class OtpVerificationComponent {
   }
 
   //== incorrect OTP entered
-  incorrectOtpEnter:boolean = false;
+  incorrectOtpEnter: boolean = false;
 
   //== sign in form builder
   otpVerificationForm = this.formBuilder.group({
-    firstOtpControl: ['',Validators.required],
-    secondOtpControl: ['',Validators.required],
-    thirdOtpControl: ['',Validators.required],
-    fourthOtpControl: ['',Validators.required],
-    fifthOtpControl: ['',Validators.required],
-    sixthOtpControl: ['',Validators.required],
+    firstOtpControl: ['', Validators.required],
+    secondOtpControl: ['', Validators.required],
+    thirdOtpControl: ['', Validators.required],
+    fourthOtpControl: ['', Validators.required],
+    fifthOtpControl: ['', Validators.required],
+    sixthOtpControl: ['', Validators.required],
   });
 
   //== get input elements
@@ -61,8 +62,24 @@ export class OtpVerificationComponent {
     if (this.otpVerificationForm.valid) {
       console.warn(this.otpVerificationForm.value);
       this.incorrectOtpEnter = false;
+
+      if (this.otpVerificationForm.valid) {
+        this.snackBarService.openSnackBar({
+          message: 'OTP verify',
+          panelClass: 'snackbar-success',
+          icon: 'success'
+        });
+      } else {
+        this.snackBarService.openSnackBar({
+          message: 'Something went wrong',
+          panelClass: 'snackbar-danger',
+          icon: 'danger',
+          duration: 10000
+        });
+      }
+
     }
-    if(this.otpVerificationForm.invalid){
+    if (this.otpVerificationForm.invalid) {
       this.incorrectOtpEnter = true;
     }
   }

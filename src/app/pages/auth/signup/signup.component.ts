@@ -16,6 +16,7 @@ import { Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { PasswordComponent } from "../../../shared/widgets/password-widget/password/password.component";
+import { SnackbarService } from '../../../shared/services/snackbar.service';
 
 @Component({
     selector: 'app-signup',
@@ -28,7 +29,7 @@ import { PasswordComponent } from "../../../shared/widgets/password-widget/passw
         NgxMaskPipe, PasswordComponent]
 })
 export class SignupComponent {
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private snackBarService: SnackbarService) { }
 
   //== form labels 
   labels = {
@@ -55,7 +56,21 @@ export class SignupComponent {
   //== onSubmit signUpForm formBuilder
   onSubmit() {
     if (this.signUpForm.valid) {
-      console.warn(this.signUpForm.value);
+      if (this.signUpForm.valid) {
+        this.snackBarService.openSnackBar({
+          message: 'Register successful',
+          panelClass: 'snackbar-success',
+           icon: 'success'
+
+        });
+      } else {
+        this.snackBarService.openSnackBar({
+          message: 'Something went wrong',
+          panelClass: 'snackbar-danger',
+          icon: 'danger',
+          duration:10000
+        });
+      }
     }
   }
 }
