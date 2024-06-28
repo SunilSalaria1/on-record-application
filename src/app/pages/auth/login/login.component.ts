@@ -45,16 +45,12 @@ export class LoginComponent {
       if (this.signInForm.controls.emailAddress.value === 'test@example.com' && this.signInForm.controls.password.value === '123') {
         this.snackBarService.openSnackBar({
           message: 'Login successful',
-          panelClass: 'snackbar-success',
-           icon: 'success'
-
+          panelClass: 'snackbar-success'        
         });
       } else {
         this.snackBarService.openSnackBar({
           message: 'Login failed due to incorrect email or password',
-          panelClass: 'snackbar-danger',
-          icon: 'danger',
-          duration:10000
+          panelClass: 'snackbar-danger'               
         });
       }
     }

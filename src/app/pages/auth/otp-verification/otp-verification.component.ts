@@ -66,15 +66,12 @@ export class OtpVerificationComponent {
       if (this.otpVerificationForm.valid) {
         this.snackBarService.openSnackBar({
           message: 'OTP verify',
-          panelClass: 'snackbar-success',
-          icon: 'success'
+          panelClass: 'snackbar-success'        
         });
       } else {
         this.snackBarService.openSnackBar({
           message: 'Something went wrong',
-          panelClass: 'snackbar-danger',
-          icon: 'danger',
-          duration: 10000
+          panelClass: 'snackbar-danger'                
         });
       }
 

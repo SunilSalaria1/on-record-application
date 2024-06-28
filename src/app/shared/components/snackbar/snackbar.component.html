@@ -1,4 +1,4 @@
-<div class="d-flex align-items-center">
+<div class="d-flex align-items-center justify-content-between">
     <!-- @if(data.icon == "success"){
     <mat-icon material-symbols-outlined>check_circle</mat-icon>
     } @else if(data.icon == "danger"){
@@ -6,7 +6,7 @@
     }
     @else if(data.icon == "default"){
     <mat-icon material-symbols-outlined>circle_notifications</mat-icon>
-    } -->
-    <mat-icon class="shadow-sm">circle_notifications</mat-icon>
-    <span class="ms-2">{{ data.message }}</span>
+    } -->        
+    <span class="d-flex align-items-center"><mat-icon class="shadow-sm me-2">circle_notifications</mat-icon> {{ data.message }}</span>
+    <mat-icon class="shadow-sm ms-4 cursor-pointer" (click)="closeSnackbar()">cancel</mat-icon>
 </div>

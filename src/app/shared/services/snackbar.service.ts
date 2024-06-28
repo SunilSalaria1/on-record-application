@@ -26,10 +26,10 @@ export class SnackbarService {
         message: config.message,
         icon: config.icon || 'default',
       },
-      duration: config.duration || 5000,
+      duration: config.duration || 10000,
       horizontalPosition: config.horizontalPosition || 'center',
       verticalPosition: config.verticalPosition || 'top',
-      panelClass: config.panelClass || 'snackbar-default',
+      panelClass: config.panelClass || 'snackbar-default'
     });
   }
 }
