@@ -59,9 +59,7 @@ export class SignupComponent {
       if (this.signUpForm.valid) {
         this.snackBarService.openSnackBar({
           message: 'Register successful',
-          panelClass: 'snackbar-success'
-          
-
+          panelClass: 'snackbar-success'         
         });
       } else {
         this.snackBarService.openSnackBar({
