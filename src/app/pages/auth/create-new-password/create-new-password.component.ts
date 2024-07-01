@@ -21,8 +21,6 @@ export class CreateNewPasswordComponent {
   labels = {
     createPassword: "Create Password",
   }
-
-
   //== createNewPassword form form builder
   createNewPassword = this.formBuilder.group({
 
