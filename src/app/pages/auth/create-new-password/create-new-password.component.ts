@@ -19,11 +19,10 @@ export class CreateNewPasswordComponent {
   constructor(private formBuilder: FormBuilder, private snackBarService: SnackbarService) { }
   //== form labels 
   labels = {
-    createPassword: "Create Password",
+    createPassword: "Create new Password",
   }
   //== createNewPassword form form builder
   createNewPassword = this.formBuilder.group({
-
   });
 
   //== onSubmit createNewPassword formBuilder
